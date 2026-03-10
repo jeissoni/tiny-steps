@@ -10,6 +10,10 @@
     var app = document.getElementById('app');
     if (!app) return;
     var reveals = app.querySelectorAll('.reveal');
+    if (reveals.length === 0) {
+      console.warn('No .reveal elements found');
+      return;
+    }
     if (!revealObserver) {
       revealObserver = new IntersectionObserver(function (entries) {
         entries.forEach(function (e) {
@@ -23,6 +27,14 @@
     reveals.forEach(function (r) {
       r.classList.remove('visible');
       revealObserver.observe(r);
+      // Trigger immediately if already in viewport on initial load
+      setTimeout(function() {
+        var rect = r.getBoundingClientRect();
+        if (rect.top < window.innerHeight && rect.bottom > 0) {
+          r.classList.add('visible');
+          revealObserver.unobserve(r);
+        }
+      }, 50);
     });
   }
 

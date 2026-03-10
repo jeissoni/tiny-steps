@@ -28,7 +28,8 @@
   }
 
   function loadView(path) {
-    return fetch(path).then(function (res) {
+    // Evita respuestas cacheadas (Live Server a veces sirve versiones antiguas)
+    return fetch(path, { cache: 'no-store' }).then(function (res) {
       if (!res.ok) throw new Error('View not found: ' + path);
       return res.text();
     });
@@ -46,18 +47,10 @@
 
   /**
    * Navega a una ruta: carga la vista y la pinta en #app.
-   * Si la ruta es "home" y #app ya tiene el Hero (contenido inicial), no hace fetch.
    */
   function navigate(route) {
     route = route || getRoute();
     setTitle(route);
-    var app = document.getElementById('app');
-    var homeAlreadyInLayout = route === 'home' && app && app.querySelector('.hero');
-    if (homeAlreadyInLayout) {
-      var ev = new CustomEvent('viewLoaded', { detail: { route: route } });
-      global.dispatchEvent(ev);
-      return Promise.resolve();
-    }
     var path = getViewPath(route);
     return loadView(path)
       .then(function (html) {
@@ -72,12 +65,11 @@
   }
 
   function init() {
-    var route = getRoute();
-    if (!global.location.hash || global.location.hash === '#') {
-      global.location.replace(global.location.pathname + global.location.search + '#/home');
-      return;
-    }
-    navigate(route);
+    // Siempre que cargue la página, navegamos a la ruta
+    // actual (derivada del hash). Si no hay hash, getRoute()
+    // devuelve 'home', así que se carga la vista home.
+    navigate(getRoute());
+
     global.addEventListener('hashchange', function () {
       navigate(getRoute());
     });
