@@ -73,6 +73,133 @@
     };
   }
 
+  function initParentsReviewsCarousel() {
+    var root = document.querySelector('.section-parents-reviews');
+    if (!root) return;
+
+    var cardsWrap = root.querySelector('.parents-reviews__cards[data-carousel="parents-reviews"]');
+    var dots = Array.prototype.slice.call(root.querySelectorAll('.parents-reviews__dot[data-index]'));
+    var img = root.querySelector('.parents-reviews__image');
+    if (!cardsWrap || dots.length === 0 || !img) return;
+
+    // 4 slides (una por bolita). Puedes cambiar textos/imagenes aquí cuando quieras.
+    var SLIDES = [
+      {
+        text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+        author: 'Luise Henrik',
+        role: 'Kid Parent',
+        image: 'images/test-281x300.webp'
+      },
+      {
+        text: 'Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
+        author: 'Luise Henrikes',
+        role: 'Kid Parent',
+        image: 'images/test-281x300.webp'
+      },
+      {
+        text: 'Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.',
+        author: 'Luise Henrikes2',
+        role: 'Kid Parent',
+        image: 'images/test-281x300.webp'
+      },
+      {
+        text: 'Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
+        author: 'New Parent',
+        role: 'Kid Parent',
+        image: 'images/test-281x300.webp'
+      }
+    ];
+
+    var slots = {
+      top: cardsWrap.querySelector('[data-slot="top"]'),
+      mid: cardsWrap.querySelector('[data-slot="mid"]'),
+      bottom: cardsWrap.querySelector('[data-slot="bottom"]')
+    };
+    if (!slots.top || !slots.mid || !slots.bottom) return;
+
+    var current = 0;
+    var isAnimating = false;
+    var ANIM_MS = 280;
+
+    function setCardContent(card, slide) {
+      var p = card.querySelector('.review-card__text');
+      var a = card.querySelector('.review-card__author');
+      var r = card.querySelector('.review-card__role');
+      if (p) p.textContent = slide.text;
+      if (a) a.textContent = slide.author;
+      if (r) r.textContent = slide.role;
+    }
+
+    function setVariant(card, variant) {
+      card.classList.remove('review-card--purple', 'review-card--orange');
+      card.classList.add(variant === 'orange' ? 'review-card--orange' : 'review-card--purple');
+    }
+
+    function render(index) {
+      var total = SLIDES.length;
+      var topIdx = (index - 1 + total) % total;
+      var midIdx = index % total;
+      var bottomIdx = (index + 1) % total;
+
+      setVariant(slots.top, 'purple');
+      setVariant(slots.mid, 'orange');
+      setVariant(slots.bottom, 'purple');
+
+      setCardContent(slots.top, SLIDES[topIdx]);
+      setCardContent(slots.mid, SLIDES[midIdx]);
+      setCardContent(slots.bottom, SLIDES[bottomIdx]);
+
+      img.src = SLIDES[midIdx].image;
+    }
+
+    function setActiveDot(index) {
+      dots.forEach(function (d) {
+        var isActive = String(index) === d.getAttribute('data-index');
+        d.classList.toggle('parents-reviews__dot--active', isActive);
+        d.setAttribute('aria-selected', isActive ? 'true' : 'false');
+      });
+    }
+
+    function slideTo(nextIndex) {
+      if (isAnimating) return;
+      if (nextIndex === current) return;
+
+      var dir = nextIndex > current ? 'up' : 'down';
+      isAnimating = true;
+      cardsWrap.classList.add('is-animating');
+      cardsWrap.classList.remove('slide-up', 'slide-down');
+      cardsWrap.classList.add(dir === 'up' ? 'slide-up' : 'slide-down');
+
+      setTimeout(function () {
+        current = nextIndex;
+        render(current);
+        setActiveDot(current);
+        cardsWrap.classList.remove('slide-up', 'slide-down');
+        // Small reflow-safe delay to avoid flicker on some browsers
+        setTimeout(function () {
+          cardsWrap.classList.remove('is-animating');
+          isAnimating = false;
+        }, 20);
+      }, ANIM_MS);
+    }
+
+    // Initial paint based on active dot (fallback to 0)
+    var initialDot = root.querySelector('.parents-reviews__dot--active[data-index]');
+    current = initialDot ? parseInt(initialDot.getAttribute('data-index'), 10) || 0 : 0;
+    render(current);
+    setActiveDot(current);
+
+    // Delegated click
+    root.addEventListener('click', function (e) {
+      var btn = e.target.closest('.parents-reviews__dot[data-index]');
+      if (!btn) return;
+      e.preventDefault();
+      var idx = parseInt(btn.getAttribute('data-index'), 10);
+      if (isNaN(idx)) return;
+      slideTo(idx);
+    });
+  }
+
   var heroBgInterval = null;
   var HERO_IMAGES = ['./images/home2.webp', './images/home1.webp'];
   var HERO_BG_INTERVAL_MS = 10000;
@@ -114,7 +241,10 @@
     var route = (detail && detail.route) || (window.TinyStepsRouter && window.TinyStepsRouter.getRoute()) || 'home';
     if (heroBgInterval) { clearInterval(heroBgInterval); heroBgInterval = null; }
     initReveal();
-    if (route === 'home') initHeroBgSlider();
+    if (route === 'home') {
+      initHeroBgSlider();
+      initParentsReviewsCarousel();
+    }
     if (route === 'testimonials') initTestimonialsSlider();
     if (route === 'contact') initContactForm();
     initFloatBtn();
