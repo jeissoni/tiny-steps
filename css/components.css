@@ -1,0 +1,196 @@
+/* Buttons */
+.btn {
+  display: inline-flex; align-items: center; gap: .5rem;
+  padding: .8rem 1.8rem; border-radius: 2rem;
+  font-weight: 800; font-size: 1rem; cursor: pointer;
+  transition: transform .2s, box-shadow .2s;
+}
+.btn:hover { transform: translateY(-3px); }
+.btn-primary { background: var(--coral); color: #fff; box-shadow: 0 4px 20px rgba(255,107,107,.3); }
+.btn-primary:hover { box-shadow: 0 8px 30px rgba(255,107,107,.4); }
+.btn-secondary { background: #fff; color: var(--dark); border: 2.5px solid var(--dark); }
+.btn-secondary:hover { background: var(--dark); color: #fff; }
+.btn-block { width: 100%; justify-content: center; }
+.btn-about { background: var(--yellow) !important; color: var(--dark) !important; }
+.btn-about:hover { box-shadow: 0 8px 30px rgba(255,217,74,.4); }
+
+/* Variant para botón de la franja About-summary */
+.btn--trail {
+  background: #7cc74b !important;
+  border-color: #7cc74b !important;
+  color: #fff !important;
+}
+.btn--trail:hover {
+  background: #65b13a !important;
+  border-color: #65b13a !important;
+}
+
+/* Elementor-like icon boxes */
+.hero-iconbox {
+  display: flex;
+  align-items: center;
+  gap: .9rem;
+}
+.hero-iconbox-icon { flex: 0 0 auto; }
+.hero-icon-link {
+  width: 44px;
+  height: 44px;
+  border-radius: 999px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255,255,255,0.14);
+  border: 1px solid rgba(255,255,255,0.18);
+  transition: transform .15s ease, background .15s ease;
+}
+.hero-icon-link:hover { transform: scale(0.96); background: rgba(255,255,255,0.20); }
+.hero-icon-link svg { width: 22px; height: 22px; fill: #fff; display: block; }
+
+.hero-iconbox-content { min-width: 0; }
+.hero-iconbox-title {
+  font-family: 'Fredoka', sans-serif;
+  font-size: 1.05rem;
+  font-weight: 900;
+  line-height: 1.2;
+  margin: 0 0 .2rem 0;
+}
+.hero-iconbox-title a { color: #fff; }
+.hero-iconbox-title a:hover { text-decoration: underline; }
+
+.hero-iconbox-desc {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .75rem;
+  align-items: center;
+  font-size: 1rem;
+  color: rgba(255,255,255,.9);
+}
+.hero-iconbox-link {
+  color: #fff;
+  font-weight: 800;
+  white-space: nowrap;
+}
+.hero-iconbox-link:hover { text-decoration: underline; }
+.hero-iconbox-muted { opacity: .9; }
+
+/* Split layout + divider inside strips */
+.hero-contact-banner .hero-iconbox {
+  flex: 1 1 0;
+}
+.hero-contact-banner .hero-iconbox + .hero-iconbox {
+  padding-left: 1.5rem;
+  border-left: 1px solid rgba(255,255,255,0.22);
+}
+@media (max-width: 900px) {
+  .hero-contact-banner {
+    flex-wrap: wrap;
+  }
+  .hero-contact-banner .hero-iconbox {
+    flex: 1 1 100%;
+  }
+  .hero-contact-banner .hero-iconbox + .hero-iconbox {
+    border-left: 0;
+    padding-left: 0;
+    border-top: 1px solid rgba(255,255,255,0.22);
+    padding-top: 1rem;
+  }
+}
+
+.cards-container {
+  display: flex;
+  gap: 24px;
+  max-width: 1100px;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.card {
+  background: #ffffff;
+  border-radius: 16px;
+  overflow: hidden;
+  width: 320px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  display: flex;
+  flex-direction: column;
+}
+
+.card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.14);
+}
+
+.card-image {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  display: block;
+}
+
+/* Placeholder si no hay imagen real */
+.card-image-placeholder {
+  width: 100%;
+  height: 220px;
+  background: #ddd;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 48px;
+  overflow: hidden;
+}
+.card-image-placeholder img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.card-body {
+  padding: 28px 24px 20px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.card-title {
+  font-size: 22px;
+  font-weight: 800;
+  color: #6b3fa0;
+  margin-bottom: 12px;
+}
+
+.card-description {
+  font-size: 14px;
+  color: #555;
+  line-height: 1.6;
+  font-weight: 400;
+}
+
+.card-description .check {
+  color: #6b3fa0;
+  font-weight: 700;
+}
+
+.card-footer {
+  background: #7b4db5;
+  padding: 16px;
+  text-align: center;
+  margin-top: auto;
+}
+
+.card-footer .age-label {
+  font-size: 13px;
+  color: #e0cfff;
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+
+.card-footer .age-range {
+  font-size: 16px;
+  color: #ffffff;
+  font-weight: 700;
+}

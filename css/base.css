@@ -1,0 +1,42 @@
+/* ─── RESET & VARIABLES ─────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --yellow:  #FFD94A;
+  --coral:   #FF6B6B;
+  --mint:    #4ECDC4;
+  --lavender:#A78BFA;
+  --sky:     #60A5FA;
+  --cream:   #FFF9F0;
+  --dark:    #1E1B2E;
+  --mid:     #4A4565;
+  --light:   #F8F4FF;
+  --radius:  1.2rem;
+  --shadow:  0 8px 32px rgba(30,27,46,.12);
+}
+
+html { scroll-behavior: smooth; }
+body { font-family: 'Baloo 2', sans-serif; background: var(--cream); color: var(--dark); overflow-x: hidden; }
+
+img { max-width: 100%; display: block; }
+a  { text-decoration: none; color: inherit; }
+
+/* ─── SECTION COMMONS ───────────────────────────── */
+section { padding: 5rem 2rem; }
+.section-inner { max-width: 1200px; margin: 0 auto; }
+.section-label {
+  display: inline-flex; align-items: center; gap: .4rem;
+  font-size: 1rem; font-weight: 800; text-transform: uppercase; letter-spacing: .12em;
+  color: var(--coral); margin-bottom: .75rem;
+}
+.section-label--light { color: var(--yellow); }
+.section-title {
+  font-family: 'Fredoka', sans-serif;
+  font-size: clamp(1.8rem, 3vw, 2.8rem); font-weight: 900;
+  color: var(--dark); line-height: 1.2; margin-bottom: 1rem;
+}
+.section-sub { font-size: 1.05rem; color: var(--mid); max-width: 560px; line-height: 1.7; }
+
+/* ─── FADE-IN ANIMATION ──────────────────────────── */
+.reveal { opacity: 0; transform: translateY(30px); transition: opacity .6s ease, transform .6s ease; }
+.reveal.visible { opacity: 1; transform: none; }
