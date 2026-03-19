@@ -31,6 +31,12 @@ nav {
   color: var(--coral);
   display: flex; align-items: center; gap: .5rem;
 }
+.logo img {
+  width: auto;
+  max-width: 300px;
+  height: auto;
+  max-height: 96px;
+}
 .logo span { color: var(--dark); }
 .logo-icon { font-size: 2rem; }
 
@@ -102,6 +108,12 @@ footer { background: var(--dark); color: rgba(255,255,255,.75); }
   display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 3rem;
 }
 .footer-brand .logo { color: var(--yellow); margin-bottom: 1rem; }
+.footer-brand .logo img {
+  width: auto;
+  max-width: 300px;
+  height: auto;
+  max-height: 96px;
+}
 .footer-brand .logo-footer-text { color: #fff; }
 .footer-brand .logo-footer-text span { color: var(--yellow); }
 .footer-brand p { font-size: .88rem; line-height: 1.7; margin-bottom: 1.5rem; }
