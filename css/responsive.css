@@ -132,6 +132,10 @@
   .aboutus-grid--four {
     grid-template-columns: 1fr;
   }
+  .aboutus-intro__layout {
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
   .aboutus-lead,
   .aboutus-copy { font-size: 1rem; }
 
