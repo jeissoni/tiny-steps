@@ -2,11 +2,15 @@
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 :root {
-  --yellow:  #FFD94A;
-  --coral:   #FF6B6B;
-  --mint:    #4ECDC4;
-  --lavender:#A78BFA;
-  --sky:     #60A5FA;
+  --yellow:  #ffad1c;
+  --coral:   #ec316c;
+  --mint:    #04b3ac;
+  --lavender:#6853bc;
+  --sky:     #0083da;
+  --magenta: #cc2c92;
+  --green:   #8bc53d;
+  --orange:  #f2812a;
+  --red:     #ec3f2e;
   --cream:   #FFF9F0;
   --dark:    #1E1B2E;
   --mid:     #4A4565;
