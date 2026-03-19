@@ -7,6 +7,7 @@
   var VIEWS_BASE = 'views/';
   var TITLES = {
     home: 'Home | Tiny Steps Learning Center',
+    aboutus: 'About Us | Tiny Steps Learning Center',
     programs: 'Programs | Tiny Steps Learning Center',
     activities: 'Activities | Tiny Steps Learning Center',
     team: 'Our Team | Tiny Steps Learning Center',
@@ -22,7 +23,7 @@
   }
 
   function getViewPath(route) {
-    var allowed = ['home', 'programs', 'activities', 'team', 'testimonials', 'locations', 'blog', 'contact'];
+    var allowed = ['home', 'aboutus', 'programs', 'activities', 'team', 'testimonials', 'locations', 'blog', 'contact'];
     var name = allowed.indexOf(route) !== -1 ? route : 'home';
     return VIEWS_BASE + name + '.html';
   }
@@ -55,6 +56,8 @@
     return loadView(path)
       .then(function (html) {
         render(html);
+        // En SPA, aseguramos que cada ruta inicie arriba.
+        global.scrollTo(0, 0);
         var event = new CustomEvent('viewLoaded', { detail: { route: route } });
         global.dispatchEvent(event);
       })
