@@ -150,6 +150,35 @@
   pointer-events: none;
 }
 .aboutus-intro .section-inner { position: relative; z-index: 1; }
+.aboutus-intro .section-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.aboutus-history .section-inner,
+.aboutus-philosophy .section-inner {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+.aboutus-intro__layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1.12fr) minmax(0, .88fr);
+  gap: 3.25rem;
+  align-items: center;
+}
+.aboutus-intro__content {
+  text-align: left;
+}
+.aboutus-intro__visual {
+  display: flex;
+  justify-content: center;
+}
+.aboutus-intro__img {
+  width: 100%;
+  max-width: 560px;
+  border-radius: 0;
+  box-shadow: none;
+  object-fit: cover;
+}
 .aboutus-lead {
   font-size: 1.12rem;
   color: var(--mid);
