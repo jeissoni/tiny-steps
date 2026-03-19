@@ -134,3 +134,123 @@
 }
 .info-item h4 { font-size: .9rem; font-weight: 800; color: var(--dark); margin-bottom: .25rem; }
 .info-item p  { font-size: .85rem; color: var(--mid); line-height: 1.6; }
+
+/* ─── ABOUT US ───────────────────────────────────── */
+.aboutus-intro {
+  background: linear-gradient(135deg, #f8f4ff 0%, #fff7ef 100%);
+  position: relative;
+  overflow: hidden;
+}
+.aboutus-intro::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: url('../../images/texture.png') center/cover no-repeat;
+  opacity: .1;
+  pointer-events: none;
+}
+.aboutus-intro .section-inner { position: relative; z-index: 1; }
+.aboutus-lead {
+  font-size: 1.12rem;
+  color: var(--mid);
+  line-height: 1.8;
+  max-width: 980px;
+  margin-bottom: 1rem;
+}
+.aboutus-copy {
+  font-size: 1rem;
+  color: var(--mid);
+  line-height: 1.9;
+  max-width: 980px;
+  margin-bottom: 1rem;
+}
+.aboutus-focus { background: #fff; }
+.aboutus-history { background: var(--cream); }
+.aboutus-philosophy { background: #fff; }
+.aboutus-benefits {
+  background: linear-gradient(135deg, rgba(255, 217, 74, .18) 0%, rgba(255, 255, 255, 1) 100%);
+}
+.aboutus-values {
+  background: linear-gradient(135deg, rgba(96, 165, 250, .1) 0%, rgba(167, 139, 250, .1) 100%);
+}
+.aboutus-stats {
+  background: var(--dark);
+  color: #fff;
+}
+.aboutus-stats .section-title { color: #fff; }
+.aboutus-stats .section-label { color: var(--yellow); }
+
+.aboutus-grid {
+  display: grid;
+  gap: 1.5rem;
+  margin-top: 2rem;
+  align-items: stretch;
+}
+.aboutus-grid--two { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.aboutus-grid--three { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.aboutus-grid--four { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+
+.aboutus-card {
+  background: #fff;
+  border-radius: var(--radius);
+  padding: 1.5rem;
+  box-shadow: 0 2px 16px rgba(30, 27, 46, .08);
+  border: 1.5px solid rgba(30, 27, 46, .06);
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.aboutus-card h2,
+.aboutus-card h3 {
+  font-family: 'Fredoka', sans-serif;
+  font-size: 1.35rem;
+  font-weight: 800;
+  color: var(--dark);
+  margin-bottom: .65rem;
+}
+.aboutus-card p {
+  color: var(--mid);
+  font-size: .98rem;
+  line-height: 1.75;
+  flex: 1;
+}
+.aboutus-card--feature { border-top: 4px solid var(--coral); }
+.aboutus-card--value { border-top: 4px solid var(--sky); }
+
+.aboutus-read-more {
+  display: inline-block;
+  margin-top: .8rem;
+  font-weight: 800;
+  color: var(--coral);
+}
+.aboutus-read-more:hover { text-decoration: underline; }
+
+.aboutus-stat-card {
+  background: rgba(255, 255, 255, .06);
+  border: 1.5px solid rgba(255, 255, 255, .12);
+  border-radius: var(--radius);
+  padding: 1.25rem;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.aboutus-stat-tag {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: .25rem .55rem;
+  border-radius: 999px;
+  font-size: .72rem;
+  font-weight: 800;
+  letter-spacing: .07em;
+  text-transform: uppercase;
+  color: var(--dark);
+  background: var(--yellow);
+  margin-bottom: .7rem;
+}
+.aboutus-stat-card p {
+  font-size: .98rem;
+  color: rgba(255, 255, 255, .9);
+  line-height: 1.6;
+  flex: 1;
+}

@@ -31,6 +31,15 @@
   align-items: center;
   gap: .9rem;
 }
+.hero-iconbox--reverse {
+  flex-direction: row-reverse;
+}
+.hero-iconbox--reverse .hero-iconbox-content {
+  text-align: right;
+}
+.hero-iconbox--reverse .hero-iconbox-desc {
+  justify-content: flex-end;
+}
 .hero-iconbox-icon { flex: 0 0 auto; }
 .hero-icon-link {
   width: 44px;
@@ -43,8 +52,26 @@
   border: 1px solid rgba(255,255,255,0.18);
   transition: transform .15s ease, background .15s ease;
 }
-.hero-icon-link:hover { transform: scale(0.96); background: rgba(255,255,255,0.20); }
-.hero-icon-link svg { width: 22px; height: 22px; fill: #fff; display: block; }
+.hero-icon-link:hover { transform: scale(1.06); background: rgba(255,255,255,0.20); }
+.hero-icon-link svg {
+  width: 22px;
+  height: 22px;
+  fill: #fff;
+  display: block;
+  transition: fill .2s ease, transform .2s ease;
+}
+.hero-icon-link:hover svg {
+  fill: var(--yellow);
+  transform: scale(1.05);
+}
+.hero-icon-link--xl {
+  width: 132px;
+  height: 132px;
+}
+.hero-icon-link--xl svg {
+  width: 66px;
+  height: 66px;
+}
 
 .hero-iconbox-content { min-width: 0; }
 .hero-iconbox-title {
@@ -55,7 +82,15 @@
   margin: 0 0 .2rem 0;
 }
 .hero-iconbox-title a { color: #fff; }
-.hero-iconbox-title a:hover { text-decoration: underline; }
+.hero-iconbox-title a {
+  display: inline-block;
+  transition: color .2s ease, transform .2s ease;
+}
+.hero-iconbox-title a:hover {
+  text-decoration: none;
+  color: var(--yellow);
+  transform: scale(1.04);
+}
 
 .hero-iconbox-desc {
   display: flex;
@@ -69,9 +104,24 @@
   color: #fff;
   font-weight: 800;
   white-space: nowrap;
+  display: inline-block;
+  transition: color .2s ease, transform .2s ease;
 }
-.hero-iconbox-link:hover { text-decoration: underline; }
+.hero-iconbox-link:hover {
+  text-decoration: none;
+  color: var(--yellow);
+  transform: scale(1.04);
+}
 .hero-iconbox-muted { opacity: .9; }
+
+/* Keep hero strip icons white by default */
+.hero-contact-banner .hero-icon-link svg { fill: #fff; }
+.hero-contact-banner .hero-iconbox-link--phone {
+  color: #fff;
+  font-size: 1.34rem;
+  font-weight: 900;
+  line-height: 1;
+}
 
 /* Split layout + divider inside strips */
 .hero-contact-banner .hero-iconbox {
@@ -87,6 +137,16 @@
   }
   .hero-contact-banner .hero-iconbox {
     flex: 1 1 100%;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: .65rem;
+  }
+  .hero-contact-banner .hero-iconbox .hero-iconbox-content {
+    text-align: center;
+  }
+  .hero-contact-banner .hero-iconbox .hero-iconbox-desc {
+    justify-content: center;
   }
   .hero-contact-banner .hero-iconbox + .hero-iconbox {
     border-left: 0;
