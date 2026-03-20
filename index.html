@@ -10,6 +10,16 @@
 </head>
 <body>
 
+<!-- Floating shapes background (fixed, sections float over it on scroll) -->
+<div class="bg-shapes" id="bg-shapes" aria-hidden="true">
+  <div class="shape shape-s1"></div>
+  <div class="shape shape-s2"></div>
+  <div class="shape shape-s3"></div>
+  <div class="shape shape-s4"></div>
+  <div class="shape shape-s5"></div>
+  <div class="shape shape-s6"></div>
+</div>
+
 <!-- Announcement Bar -->
 <div class="topbar">
   🎉 Limited spaces remain for 2025-26! <a href="#/contact">Schedule a Tour Today →</a>
@@ -23,40 +33,11 @@
     </a>
     <ul class="nav-links">
       <li><a href="#/home">Home</a></li>
-      <li>
-        <a href="#/aboutus">About ▾</a>
-        <div class="dropdown">
-          <a href="#/aboutus">About Us</a>
-          <a href="#/home">Why Tiny Steps?</a>
-          <a href="#/home">Our Commitment</a>
-          <a href="#/home">FAQs & Policies</a>
-          <a href="#/home">Refer a Friend</a>
-        </div>
-      </li>
-      <li>
-        <a href="#/programs">Programs ▾</a>
-        <div class="dropdown">
-          <a href="#/programs">Infants (6wk–18mo)</a>
-          <a href="#/programs">Toddlers (18mo–2.5yr)</a>
-          <a href="#/programs">Preschool (2.5–5yr)</a>
-          <a href="#/programs">After School</a>
-          <a href="#/programs">Drop-in Care</a>
-          <a href="#/programs">Summer Camp</a>
-        </div>
-      </li>
-      <li>
-        <a href="#/locations">Locations ▾</a>
-        <div class="dropdown">
-          <a href="#/locations">McBride Ave</a>
-          <a href="#/locations">Paterson Ave</a>
-          <a href="#/locations">Union Ave</a>
-        </div>
-      </li>
-      <li><a href="#/contact">Careers</a></li>
-      <li><a href="#/blog">Blog</a></li>
+      <li><a href="#/aboutus">About</a></li>
+      <li><a href="#/programs">Programs</a></li>
+      <li><a href="#/locations">Locations</a></li>
       <li><a href="#/contact" class="nav-cta">Enroll Now</a></li>
     </ul>
-    <a class="nav-profile" href="#/contact" aria-label="Contáctanos">👤</a>
     <button type="button" class="hamburger" id="hamburger" aria-label="Abrir menú">☰</button>
   </nav>
 </header>
@@ -118,6 +99,7 @@
 <button type="button" class="float-btn" id="float-tour-btn">📅 Schedule a Tour</button>
 
 <script src="./js/router.js"></script>
+<script src="./js/programs.js"></script>
 <script src="./js/app.js"></script>
 <script src="./js/script.js"></script>
 </body>
