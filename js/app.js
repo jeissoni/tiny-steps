@@ -237,14 +237,24 @@
     };
   }
 
+  function setNavActive(route) {
+    var links = document.querySelectorAll('.nav-links a[href^="#/"]:not(.nav-cta)');
+    links.forEach(function (a) {
+      var href = (a.getAttribute('href') || '').replace('#/', '');
+      a.classList.toggle('active', href === route || (href === 'home' && !route));
+    });
+  }
+
   function initView(detail) {
     var route = (detail && detail.route) || (window.TinyStepsRouter && window.TinyStepsRouter.getRoute()) || 'home';
+    setNavActive(route);
     if (heroBgInterval) { clearInterval(heroBgInterval); heroBgInterval = null; }
     initReveal();
     if (route === 'home') {
       initHeroBgSlider();
       initParentsReviewsCarousel();
     }
+    if (route === 'programs' && window.TinyStepsPrograms) window.TinyStepsPrograms.init();
     if (route === 'testimonials') initTestimonialsSlider();
     if (route === 'contact') initContactForm();
     initFloatBtn();
