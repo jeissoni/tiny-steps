@@ -1,7 +1,34 @@
 /* ─── RESET & VARIABLES ─────────────────────────── */
+@font-face {
+  font-family: "Charlie Kingdom";
+  src: url("../font/Charlie Kingdom.ttf") format("truetype");
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "NEXA BOLD";
+  src: url("../font/Nexa Bold.otf") format("opentype");
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "NEXA LIGHT";
+  src: url("../font/Nexa Light.otf") format("opentype");
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+}
+
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 :root {
+  --font-display: "Charlie Kingdom", "NEXA BOLD", "Nexa Bold", "Fredoka", sans-serif;
+  --font-body: "NEXA LIGHT", "Nexa Light", "Baloo 2", sans-serif;
+  --font-body-strong: "NEXA BOLD", "Nexa Bold", "Baloo 2", sans-serif;
   --yellow:  #ffad1c;
   --coral:   #ec316c;
   --mint:    #04b3ac;
@@ -20,7 +47,7 @@
 }
 
 html { scroll-behavior: smooth; }
-body { font-family: 'Baloo 2', sans-serif; background: var(--cream); color: var(--dark); overflow-x: hidden; }
+body { font-family: var(--font-body); background: var(--cream); color: var(--dark); overflow-x: hidden; }
 
 img { max-width: 100%; display: block; }
 a  { text-decoration: none; color: inherit; }
@@ -35,7 +62,7 @@ section { padding: 5rem 2rem; }
 }
 .section-label--light { color: var(--yellow); }
 .section-title {
-  font-family: 'Fredoka', sans-serif;
+  font-family: var(--font-display);
   font-size: clamp(1.8rem, 3vw, 2.8rem); font-weight: 900;
   color: var(--dark); line-height: 1.2; margin-bottom: 1rem;
 }
