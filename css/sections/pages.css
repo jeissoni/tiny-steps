@@ -108,7 +108,7 @@
   background: #fff; border-radius: var(--radius);
   padding: 2.5rem; box-shadow: var(--shadow);
 }
-.contact-form h3 { font-family: 'Fredoka', sans-serif; font-size: 1.6rem; font-weight: 900; color: var(--dark); margin-bottom: 1.5rem; }
+.contact-form h3 { font-family: var(--font-display); font-size: 1.6rem; font-weight: 900; color: var(--dark); margin-bottom: 1.5rem; }
 .contact-lead { margin-bottom: 2rem; }
 .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
 .form-group { margin-bottom: 1.25rem; }
@@ -118,14 +118,14 @@
 .form-group select {
   width: 100%; padding: .75rem 1rem;
   border: 2px solid rgba(30,27,46,.1); border-radius: .75rem;
-  font-family: 'Baloo 2', sans-serif; font-size: .95rem; color: var(--dark);
+  font-family: var(--font-body); font-size: .95rem; color: var(--dark);
   transition: border-color .2s; background: var(--cream); outline: none;
 }
 .form-group input:focus,
 .form-group textarea:focus { border-color: var(--coral); }
 .form-group textarea { min-height: 100px; resize: vertical; }
 .contact-info { padding-top: 1rem; }
-.contact-info h3 { font-family: 'Fredoka', sans-serif; font-size: 1.8rem; font-weight: 900; color: var(--dark); margin-bottom: 1.5rem; }
+.contact-info h3 { font-family: var(--font-display); font-size: 1.8rem; font-weight: 900; color: var(--dark); margin-bottom: 1.5rem; }
 .info-item { display: flex; gap: 1rem; margin-bottom: 1.5rem; align-items: flex-start; }
 .info-icon {
   width: 48px; height: 48px; border-radius: 1rem;
@@ -231,7 +231,7 @@
 }
 .aboutus-card h2,
 .aboutus-card h3 {
-  font-family: 'Fredoka', sans-serif;
+  font-family: var(--font-display);
   font-size: 1.35rem;
   font-weight: 800;
   color: var(--dark);

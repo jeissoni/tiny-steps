@@ -75,7 +75,7 @@
 
 .hero-iconbox-content { min-width: 0; }
 .hero-iconbox-title {
-  font-family: 'Fredoka', sans-serif;
+  font-family: var(--font-display);
   font-size: 1.05rem;
   font-weight: 900;
   line-height: 1.2;

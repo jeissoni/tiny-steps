@@ -3,5 +3,6 @@
 @import url('./layout.css');
 @import url('./components.css');
 @import url('./sections/home.css');
+@import url('./sections/programs.css');
 @import url('./sections/pages.css');
 @import url('./responsive.css');
