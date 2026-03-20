@@ -1,57 +1,235 @@
-<section class="programs reveal" id="programs">
-  <div class="section-inner">
-    <div class="section-label">🎒 Our Programs</div>
-    <h2 class="section-title">A Program for Every Stage</h2>
-    <p class="section-sub">From tiny newborns to energetic tweens, we have specialized programs designed for every developmental stage.</p>
-    <div class="programs-grid">
-      <div class="program-card c1">
-        <div class="program-icon">👶</div>
-        <h3>Infants</h3>
-        <p>Gentle, nurturing care with sensory-rich activities.</p>
-        <span class="program-age">6 Weeks – 18 Months</span>
-      </div>
-      <div class="program-card c2">
-        <div class="program-icon">🚶</div>
-        <h3>Toddlers</h3>
-        <p>Building independence through exploration.</p>
-        <span class="program-age">18 Months – 2.5 Years</span>
-      </div>
-      <div class="program-card c3">
-        <div class="program-icon">🖍️</div>
-        <h3>Preschool</h3>
-        <p>Kindergarten-ready academic foundation.</p>
-        <span class="program-age">2.5 – 5 Years</span>
-      </div>
-      <div class="program-card c4">
-        <div class="program-icon">🏫</div>
-        <h3>After School</h3>
-        <p>Homework help, enrichment, and fun.</p>
-        <span class="program-age">3 – 13 Years</span>
-      </div>
-      <div class="program-card c5">
-        <div class="program-icon">🌤️</div>
-        <h3>Drop-in Care</h3>
-        <p>Flexible care when you need it most.</p>
-        <span class="program-age">6 Weeks – 13 Years</span>
-      </div>
-      <div class="program-card c6">
-        <div class="program-icon">⛺</div>
-        <h3>Summer Camp</h3>
-        <p>Adventure-filled weeks all summer long.</p>
-        <span class="program-age">3 – 13 Years</span>
-      </div>
+<!-- Effects elements (programs page) -->
+<div class="scroll-progress" id="scrollProgress"></div>
+<canvas id="particle-canvas"></canvas>
+
+<!-- ── PAGE HERO ── -->
+<section class="page-hero">
+  <div class="hero-circle hc1"></div>
+  <div class="hero-circle hc2"></div>
+  <div class="page-hero-inner">
+    <div class="page-breadcrumb">
+      <a href="#/home">Home</a>
+      <span>›</span>
+      <span style="color:rgba(255,255,255,.8)">Programs</span>
     </div>
-    <div class="programs-cta">
-      <a href="#/contact" class="btn btn-primary">Explore All Programs →</a>
+    <h1>Our <em>Programs</em> 🎒</h1>
+    <p class="page-hero-desc">
+      Thoughtfully designed programs for every stage of development — from 6 weeks to 13 years.
+      Nurturing confidence, creativity, and connection through hands-on learning.
+    </p>
+    <div class="page-hero-badges">
+      <div class="hero-pill">👶 6 weeks – 18 months</div>
+      <div class="hero-pill">🧒 Toddlers & Preschool</div>
+      <div class="hero-pill">🎨 After School & Summer</div>
+      <div class="hero-pill">🌟 Experience Curriculum</div>
     </div>
   </div>
 </section>
 
-<section class="cta-banner reveal">
-  <h2>Ready to Give Your Child the Best Start?</h2>
-  <p>Spaces are limited — secure your child's spot today and join our thriving community of families across Paterson, NJ.</p>
-  <div class="cta-banner-btns">
-    <a href="#/contact" class="btn btn-white">📋 Enroll Now</a>
-    <a href="#/contact" class="btn btn-outline-white">📅 Schedule a Tour</a>
+<!-- ── QUICK NAV ── -->
+<div class="prog-nav">
+  <a href="#infants" class="prog-nav-btn pnb-1">👶 Infants</a>
+  <a href="#toddlers" class="prog-nav-btn pnb-2">🚶 Toddlers</a>
+  <a href="#preschool" class="prog-nav-btn pnb-3">🎨 Preschool</a>
+  <a href="#afterschool" class="prog-nav-btn pnb-4">📚 After School</a>
+  <a href="#dropin" class="prog-nav-btn pnb-5">🕐 Drop-in Care</a>
+  <a href="#summercamp" class="prog-nav-btn pnb-6">☀️ Summer Camp</a>
+</div>
+
+<!-- ── INTRO ── -->
+<div class="intro-strip">
+  <div class="section-kicker">What We Offer</div>
+  <h2>Programs at Tiny Steps Learning Center</h2>
+  <p>
+    <strong>Serving children from 6 weeks to 5 years during the school year, and up to 13 years during summer and special programs.</strong><br/><br/>
+    Each program is thoughtfully designed to support every stage of development — nurturing confidence, creativity, and connection through meaningful relationships.
+  </p>
+  <div class="curriculum-badge">🌟 Proudly implementing the Experience Curriculum</div>
+</div>
+
+<!-- ── PROGRAMS ── -->
+<section class="programs-section">
+  <div class="programs-wrap">
+
+    <!-- ── 1. INFANTS ── -->
+    <div class="program-row theme-pink reveal from-left" id="infants">
+      <div class="prog-visual">
+        <div class="prog-visual-bg pv-pink">
+          <img src="images/infant-image.webp" alt="Infants program" loading="lazy" onerror="this.style.display='none'"/>
+          👶
+        </div>
+        <div class="prog-age-tag">⏱ <span>6 weeks – 18 months</span></div>
+        <div class="prog-enroll-float">
+          <div class="pef-emoji">💛</div>
+          <div><div class="pef-label">Program</div><div class="pef-val" style="color:var(--pink)">Infants</div></div>
+        </div>
+      </div>
+      <div class="prog-content">
+        <div class="prog-label">👶 Program 1 of 6</div>
+        <h2>Infants</h2>
+        <p class="prog-tagline">A nurturing and safe start for your baby.</p>
+        <ul class="prog-features">
+          <li><div class="feat-check">✓</div>Cozy infant rooms designed for comfort, bonding, and early exploration</li>
+          <li><div class="feat-check">✓</div>Caring teachers providing responsive, one-on-one attention</li>
+          <li><div class="feat-check">✓</div>Sensory and motor activities to support early development and attachment</li>
+        </ul>
+        <a href="#/contact" class="prog-btn">Enroll Now →</a>
+      </div>
+    </div>
+
+    <hr class="prog-divider"/>
+
+    <!-- ── 2. TODDLERS ── -->
+    <div class="program-row flip theme-blue reveal from-right" id="toddlers">
+      <div class="prog-visual">
+        <div class="prog-visual-bg pv-blue">
+          <img src="images/Toddler-image.webp" alt="Toddlers program" loading="lazy" onerror="this.style.display='none'"/>
+          🚶
+        </div>
+        <div class="prog-age-tag">⏱ <span>18 months – 2.5 years</span></div>
+        <div class="prog-enroll-float">
+          <div class="pef-emoji">🔵</div>
+          <div><div class="pef-label">Program</div><div class="pef-val" style="color:var(--blue)">Toddlers</div></div>
+        </div>
+      </div>
+      <div class="prog-content">
+        <div class="prog-label">🚶 Program 2 of 6</div>
+        <h2>Toddlers</h2>
+        <p class="prog-tagline">Encouraging independence through hands-on learning.</p>
+        <ul class="prog-features">
+          <li><div class="feat-check">✓</div>Interactive activities to build confidence, motor skills, and curiosity</li>
+          <li><div class="feat-check">✓</div>Language and social-emotional development through play and routine</li>
+          <li><div class="feat-check">✓</div>Safe, inviting spaces designed for movement and exploration</li>
+        </ul>
+        <a href="#/contact" class="prog-btn">Enroll Now →</a>
+      </div>
+    </div>
+
+    <hr class="prog-divider"/>
+
+    <!-- ── 3. PRESCHOOL ── -->
+    <div class="program-row theme-green reveal from-left" id="preschool">
+      <div class="prog-visual">
+        <div class="prog-visual-bg pv-green">
+          <img src="images/preschool.jpg" alt="Preschool program" loading="lazy" onerror="this.style.display='none'"/>
+          🎨
+        </div>
+        <div class="prog-age-tag">⏱ <span>2.5 – 5 years</span></div>
+        <div class="prog-enroll-float">
+          <div class="pef-emoji">🟢</div>
+          <div><div class="pef-label">Program</div><div class="pef-val" style="color:var(--green)">Preschool</div></div>
+        </div>
+      </div>
+      <div class="prog-content">
+        <div class="prog-label">🎨 Program 3 of 6</div>
+        <h2>Preschool</h2>
+        <p class="prog-tagline">Creative learning that prepares children for kindergarten and beyond.</p>
+        <ul class="prog-features">
+          <li><div class="feat-check">✓</div>The Experience Curriculum supports foundational academics and character building</li>
+          <li><div class="feat-check">✓</div>Balanced structure: circle time, group learning, dramatic play, and art</li>
+          <li><div class="feat-check">✓</div>Daily opportunities for problem-solving, independence, and collaborative learning</li>
+        </ul>
+        <a href="#/contact" class="prog-btn">Enroll Now →</a>
+      </div>
+    </div>
+
+    <hr class="prog-divider"/>
+
+    <!-- ── 4. AFTERSCHOOL ── -->
+    <div class="program-row flip theme-orange reveal from-right" id="afterschool">
+      <div class="prog-visual">
+        <div class="prog-visual-bg pv-orange">
+          <img src="images/afterschoolactivities.jpg" alt="After School program" loading="lazy" onerror="this.style.display='none'"/>
+        </div>
+        <div class="prog-age-tag">⏱ <span>Ages 3 – 5 years during the school year</span></div>
+        <div class="prog-enroll-float">
+          <div class="pef-emoji">🟠</div>
+          <div><div class="pef-label">Program</div><div class="pef-val" style="color:var(--orange)">After School</div></div>
+        </div>
+      </div>
+      <div class="prog-content">
+        <div class="prog-label">📚 Program 4 of 6</div>
+        <h2>After School</h2>
+        <p class="prog-tagline">A supportive space for learning and fun after regular school hours.</p>
+        <ul class="prog-features">
+          <li><div class="feat-check">✓</div>Homework help, reading time, and guided enrichment activities</li>
+          <li><div class="feat-check">✓</div>Creative and recreational activities to wind down the day</li>
+          <li><div class="feat-check">✓</div>Safe, structured supervision with routines that support development</li>
+        </ul>
+        <a href="#/contact" class="prog-btn">Enroll Now →</a>
+      </div>
+    </div>
+
+    <hr class="prog-divider"/>
+
+    <!-- ── 5. DROP-IN CARE ── -->
+    <div class="program-row theme-teal reveal from-left" id="dropin">
+      <div class="prog-visual">
+        <div class="prog-visual-bg pv-teal">
+          <img src="images/dropincare.webp" alt="Drop-in Care program" loading="lazy" onerror="this.style.display='none'"/>          
+        </div>
+        <div class="prog-age-tag">⏱ <span>6 weeks – 5 years (school year) / Up to 13 years (breaks)</span></div>
+        <div class="prog-enroll-float">
+          <div class="pef-emoji">🩵</div>
+          <div><div class="pef-label">Program</div><div class="pef-val" style="color:var(--teal)">Drop-in Care</div></div>
+        </div>
+      </div>
+      <div class="prog-content">
+        <div class="prog-label">🕐 Program 5 of 6</div>
+        <h2>Drop-in Care</h2>
+        <p class="prog-tagline">Flexible childcare when you need it most.</p>
+        <ul class="prog-features">
+          <li><div class="feat-check">✓</div>Short-term or hourly care options for busy and unpredictable schedules</li>
+          <li><div class="feat-check">✓</div>Ideal for families who need occasional care or backup support</li>
+          <li><div class="feat-check">✓</div>Safe, engaging classroom experiences tailored to each age group</li>
+        </ul>
+        <a href="#/contact" class="prog-btn">Enroll Now →</a>
+      </div>
+    </div>
+
+    <hr class="prog-divider"/>
+
+    <!-- ── 6. SUMMER CAMP ── -->
+    <div class="program-row flip theme-purple reveal from-right" id="summercamp">
+      <div class="prog-visual">
+        <div class="prog-visual-bg pv-purple">
+          <img src="images/summercamp-image.webp" alt="Summer Camp program" loading="lazy" onerror="this.style.display='none'"/>
+          ☀️
+        </div>
+        <div class="prog-age-tag">⏱ <span>Age: 3 – 13 years</span></div>
+        <div class="prog-enroll-float">
+          <div class="pef-emoji">🟣</div>
+          <div><div class="pef-label">Program</div><div class="pef-val" style="color:var(--purple)">Summer Camp</div></div>
+        </div>
+      </div>
+      <div class="prog-content">
+        <div class="prog-label">☀️ Program 6 of 6</div>
+        <h2>Summer Camp</h2>
+        <p class="prog-tagline">An exciting summer filled with learning, creativity, and adventure.</p>
+        <ul class="prog-features">
+          <li><div class="feat-check">✓</div>Runs mid/late June through late August (dates vary by year)</li>
+          <li><div class="feat-check">✓</div>Outdoor play, science experiments, arts, and water days</li>
+          <li><div class="feat-check">✓</div>Weekly themes and a warm, welcoming summer environment</li>
+        </ul>
+        <a href="#/contact" class="prog-btn">Enroll Now →</a>
+      </div>
+    </div>
+
   </div>
+
+  <!-- Transportation note -->
+  <div class="transport-note">
+    <span>🚌</span>
+    <p><strong>Transportation services may become available in the near future.</strong> Stay tuned for updates from your center director via Brightwheel.</p>
+  </div>
+
 </section>
+
+<!-- ── CTA ── -->
+<div class="programs-cta">
+  <div class="cta-text">
+    <h2>Ready to Find the Perfect Program for Your Child? 👣</h2>
+    <p>Whether you're exploring infant care, preschool, or summer camp — we're here to help your family take the next step with confidence. Schedule a tour and see Tiny Steps in action.</p>
+    <a href="#/contact" class="btn-form btn-form--link">📅 Schedule a Tour</a>
+  </div>
+</div>
