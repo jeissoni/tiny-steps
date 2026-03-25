@@ -52,23 +52,6 @@
 }
 .slider-btn:hover { background: var(--yellow); }
 
-/* ─── LOCATIONS ─────────────────────────────────── */
-.locations { background: var(--dark); color: #fff; }
-.locations .section-title { color: #fff; }
-.locations-grid {
-  display: grid; grid-template-columns: repeat(3, 1fr);
-  gap: 1.5rem; margin-top: 3rem;
-}
-.location-card {
-  background: rgba(255,255,255,.06); border-radius: var(--radius);
-  padding: 2rem; border: 1.5px solid rgba(255,255,255,.1);
-  transition: border-color .2s;
-}
-.location-card:hover { border-color: var(--yellow); }
-.location-icon { font-size: 2rem; margin-bottom: 1rem; }
-.location-card h3 { font-size: 1.1rem; font-weight: 800; color: #fff; margin-bottom: .75rem; }
-.location-card p  { font-size: .88rem; color: rgba(255,255,255,.65); line-height: 1.6; margin-bottom: .35rem; }
-
 /* ─── BLOG ───────────────────────────────────────── */
 .blog { background: var(--light); }
 .blog-grid {
@@ -95,45 +78,6 @@
 .blog-card p  { font-size: .85rem; color: var(--mid); line-height: 1.6; margin-bottom: 1rem; }
 .blog-link { font-size: .85rem; font-weight: 800; color: var(--coral); }
 .blog-link:hover { text-decoration: underline; }
-
-/* ─── CONTACT ────────────────────────────────────── */
-.contact-section {
-  background: linear-gradient(135deg, var(--light) 0%, #FFF0F9 100%);
-}
-.contact-inner {
-  max-width: 1200px; margin: 0 auto;
-  display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start;
-}
-.contact-form {
-  background: #fff; border-radius: var(--radius);
-  padding: 2.5rem; box-shadow: var(--shadow);
-}
-.contact-form h3 { font-family: var(--font-display); font-size: 1.6rem; font-weight: 900; color: var(--dark); margin-bottom: 1.5rem; }
-.contact-lead { margin-bottom: 2rem; }
-.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
-.form-group { margin-bottom: 1.25rem; }
-.form-group label { display: block; font-size: .85rem; font-weight: 700; color: var(--mid); margin-bottom: .4rem; }
-.form-group input,
-.form-group textarea,
-.form-group select {
-  width: 100%; padding: .75rem 1rem;
-  border: 2px solid rgba(30,27,46,.1); border-radius: .75rem;
-  font-family: var(--font-body); font-size: .95rem; color: var(--dark);
-  transition: border-color .2s; background: var(--cream); outline: none;
-}
-.form-group input:focus,
-.form-group textarea:focus { border-color: var(--coral); }
-.form-group textarea { min-height: 100px; resize: vertical; }
-.contact-info { padding-top: 1rem; }
-.contact-info h3 { font-family: var(--font-display); font-size: 1.8rem; font-weight: 900; color: var(--dark); margin-bottom: 1.5rem; }
-.info-item { display: flex; gap: 1rem; margin-bottom: 1.5rem; align-items: flex-start; }
-.info-icon {
-  width: 48px; height: 48px; border-radius: 1rem;
-  background: var(--yellow); display: flex; align-items: center; justify-content: center;
-  font-size: 1.4rem; flex-shrink: 0;
-}
-.info-item h4 { font-size: .9rem; font-weight: 800; color: var(--dark); margin-bottom: .25rem; }
-.info-item p  { font-size: .85rem; color: var(--mid); line-height: 1.6; }
 
 /* ─── ABOUT US ───────────────────────────────────── */
 .aboutus-intro {

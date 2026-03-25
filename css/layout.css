@@ -123,7 +123,82 @@ footer { background: var(--dark); color: rgba(255,255,255,.75); }
 }
 .footer-brand .logo-footer-text { color: #fff; }
 .footer-brand .logo-footer-text span { color: var(--yellow); }
-.footer-brand p { font-size: .88rem; line-height: 1.7; margin-bottom: 1.5rem; }
+.footer-brand p { font-size: .88rem; line-height: 1.7; margin-bottom: 1.25rem; }
+.footer-contact {
+  display: flex;
+  flex-direction: column;
+  gap: .55rem;
+  margin-bottom: 1.35rem;
+}
+.footer-contact-link {
+  display: inline-flex;
+  align-items: center;
+  gap: .5rem;
+  font-size: .86rem;
+  font-weight: 700;
+  color: rgba(255, 255, 255, 0.9);
+  text-decoration: none;
+  transition: color .15s;
+}
+.footer-contact-link:hover { color: var(--yellow); }
+.footer-contact-icon {
+  width: 1.05rem;
+  height: 1.05rem;
+  flex-shrink: 0;
+  opacity: 0.95;
+}
+.footer-contact-link--wa:hover { color: #25d366; }
+
+.footer-socials {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .65rem;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.footer-socials li { margin: 0; }
+.footer-social-link {
+  width: 42px;
+  height: 42px;
+  border-radius: .75rem;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1.5px solid rgba(255, 255, 255, 0.12);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background .15s, color .15s, border-color .15s, transform .15s;
+  color: rgba(255, 255, 255, 0.92);
+}
+.footer-social-link svg { width: 20px; height: 20px; }
+.footer-social-link:hover { transform: translateY(-2px); }
+.footer-social-link--fb:hover {
+  color: #1877f2;
+  border-color: rgba(24, 119, 242, 0.45);
+  background: rgba(24, 119, 242, 0.12);
+}
+.footer-social-link--wa:hover {
+  color: #25d366;
+  border-color: rgba(37, 211, 102, 0.45);
+  background: rgba(37, 211, 102, 0.1);
+}
+.footer-social-link--ig:hover {
+  color: #e4405f;
+  border-color: rgba(228, 64, 95, 0.45);
+  background: rgba(228, 64, 95, 0.1);
+}
+.footer-social-link--tt:hover {
+  color: #fff;
+  border-color: rgba(255, 255, 255, 0.35);
+  background: rgba(255, 255, 255, 0.1);
+}
+.footer-social-link--li:hover {
+  color: #0a66c2;
+  border-color: rgba(10, 102, 194, 0.45);
+  background: rgba(10, 102, 194, 0.12);
+}
+
+/* Legacy (otras páginas) */
 .socials { display: flex; gap: .75rem; }
 .social-btn {
   width: 40px; height: 40px; border-radius: .75rem;

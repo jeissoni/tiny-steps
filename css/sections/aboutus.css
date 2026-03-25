@@ -204,6 +204,7 @@ body {
   font-size: 7rem;
   position: relative;
   box-shadow: 0 20px 60px rgba(236,49,108,0.15);
+  transition: transform 0.45s cubic-bezier(0.25, 0.46, 0.45, 0.94), box-shadow 0.35s ease;
 }
 
 .aboutus-intro__img {
@@ -475,10 +476,7 @@ body {
   border: 1px solid rgba(255,255,255,0.1);
   border-radius: 24px;
   padding: 2rem;
-  transition: transform 0.25s, background 0.25s;
 }
-
-.phil-card:hover { transform: translateY(-6px); background: rgba(255,255,255,0.1); }
 
 .phil-icon {
   width: 52px;
@@ -521,10 +519,7 @@ body {
   padding: 2.2rem;
   position: relative;
   overflow: hidden;
-  transition: transform 0.25s, box-shadow 0.25s;
 }
-
-.benefit-card:hover { transform: translateY(-6px); box-shadow: 0 20px 50px rgba(0,0,0,0.09); }
 
 .bc-1 { background: linear-gradient(145deg, #fff0f6, #ffd6e8); border: 2px solid rgba(236,49,108,0.15); }
 .bc-2 { background: linear-gradient(145deg, #eaf6ff, #c8e8ff); border: 2px solid rgba(0,131,218,0.15); }
@@ -577,22 +572,22 @@ body {
   margin-top: 3rem;
 }
 
+/* Misma base que .activity-card en home.css (Why Tiny Steps) */
 .value-card {
-  background: white;
-  border-radius: 24px;
-  padding: 2rem 1.6rem;
+  background: rgba(255, 255, 255, 0.85);
+  border: 1px solid rgba(255, 255, 255, 0.9);
+  border-radius: 1.5rem;
+  border-bottom: 4px solid transparent;
+  padding: 2.25rem 2rem;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.18);
   text-align: center;
-  box-shadow: 0 4px 20px rgba(0,0,0,0.05);
-  transition: transform 0.25s;
-  border-top: 5px solid transparent;
+  transition: transform 0.25s, box-shadow 0.25s, background 0.25s, border-color 0.25s;
 }
 
-.value-card:hover { transform: translateY(-7px) rotate(-1deg); }
-
-.vc-1 { border-color: var(--pink); }
-.vc-2 { border-color: var(--blue); }
-.vc-3 { border-color: var(--green); }
-.vc-4 { border-color: var(--orange); }
+.value-card:nth-child(1) { border-bottom-color: var(--pink); }
+.value-card:nth-child(2) { border-bottom-color: var(--blue); }
+.value-card:nth-child(3) { border-bottom-color: var(--green); }
+.value-card:nth-child(4) { border-bottom-color: var(--orange); }
 
 .value-emoji {
   font-size: 2.6rem;
@@ -652,10 +647,7 @@ body {
   display: flex;
   align-items: flex-start;
   gap: 1rem;
-  transition: transform 0.2s;
 }
-
-.stat-card:hover { transform: translateY(-5px); }
 
 .stat-icon {
   width: 48px;
@@ -709,4 +701,203 @@ body {
   .values-grid,
   .stats-grid { grid-template-columns: 1fr; }
   .section-inner { padding: 0 1.2rem; }
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   Card & item interactions — propuesta aplicada (sutil, accesible)
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+/* Hero: imagen con zoom suave; badges ya flotan */
+.aboutus-intro__visual:hover .aboutus-intro__img-wrap {
+  transform: scale(1.02);
+  box-shadow: 0 24px 56px rgba(236, 49, 108, 0.18);
+}
+
+.intro-badge {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.aboutus-intro__visual:hover .intro-badge {
+  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.12);
+}
+
+/* Misión / Visión: elevación + icono de fondo un poco más presente */
+.vm-card {
+  transition:
+    transform 0.38s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+    box-shadow 0.35s ease;
+  cursor: default;
+}
+.vm-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 18px 48px rgba(0, 0, 0, 0.12);
+}
+.vm-card::before {
+  transition: opacity 0.35s ease, transform 0.45s ease;
+}
+.vm-card:hover::before {
+  opacity: 0.22;
+  transform: scale(1.06);
+}
+
+/* Línea de tiempo: fila entera reacciona; punto se intensifica */
+.tl-item {
+  transition: transform 0.3s ease;
+  border-radius: 12px;
+  margin-left: -0.5rem;
+  margin-right: -0.5rem;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+}
+.tl-item:hover {
+  transform: translateX(4px);
+}
+.tl-item:hover .tl-dot {
+  box-shadow: 0 0 0 4px rgba(255, 255, 255, 0.9), 0 6px 20px rgba(0, 0, 0, 0.12);
+}
+.tl-item:hover .tl-year {
+  letter-spacing: 0.12em;
+}
+
+/* Aside historia: mini-stats con desplazamiento lateral alternado (como Contact) */
+.hms-item {
+  transition:
+    transform 0.38s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+    box-shadow 0.3s ease,
+    border-color 0.25s ease;
+  border: 1px solid transparent;
+}
+.hms-item:hover {
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.08);
+  border-color: rgba(236, 49, 108, 0.12);
+  transform: translateX(5px);
+}
+.history-mini-stats .hms-item:nth-child(even):hover {
+  transform: translateX(-5px);
+}
+
+.history-highlight-box {
+  transition: transform 0.35s ease, box-shadow 0.35s ease;
+}
+.history-aside:hover .history-highlight-box {
+  transform: translateY(-2px);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.15);
+}
+
+/* Filosofía: brillo en borde + icono */
+.phil-card {
+  transition:
+    transform 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+    background 0.3s ease,
+    border-color 0.3s ease,
+    box-shadow 0.35s ease;
+}
+.phil-card:hover {
+  transform: translateY(-6px);
+  background: rgba(255, 255, 255, 0.12);
+  border-color: rgba(255, 255, 255, 0.22);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.2);
+}
+.phil-card:hover .phil-icon {
+  transform: scale(1.08);
+}
+.phil-icon {
+  transition: transform 0.35s ease;
+}
+
+/* Beneficios: lateral alternado + sombra (menos “solo subir”) */
+.benefit-card {
+  transition:
+    transform 0.38s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+    box-shadow 0.35s ease,
+    border-color 0.28s ease;
+}
+.benefit-card:hover {
+  transform: translateX(6px) translateY(-4px);
+  box-shadow: 0 22px 48px rgba(0, 0, 0, 0.1);
+}
+.benefits-grid .benefit-card:nth-child(even):hover {
+  transform: translateX(-6px) translateY(-4px);
+}
+
+/* Valores: mismo hover que .activity-card en home (impares / pares) */
+.value-card:nth-child(odd):hover {
+  transform: translateY(-7px) translateX(6px) rotate(-1deg);
+  background: rgba(255, 255, 255, 0.95);
+  box-shadow: 0 18px 55px rgba(0, 0, 0, 0.26);
+  border-color: var(--yellow);
+}
+.value-card:nth-child(even):hover {
+  transform: translateY(-7px) translateX(-6px) rotate(1deg);
+  background: rgba(255, 255, 255, 0.95);
+  box-shadow: 0 18px 55px rgba(0, 0, 0, 0.26);
+  border-color: var(--yellow);
+}
+.value-emoji {
+  display: inline-block;
+}
+
+/* Stats: brillo en borde sobre fondo degradado */
+.stat-card {
+  transition:
+    transform 0.32s ease,
+    background 0.3s ease,
+    border-color 0.3s ease,
+    box-shadow 0.3s ease;
+}
+.stat-card:hover {
+  transform: translateY(-6px);
+  background: rgba(255, 255, 255, 0.16);
+  border-color: rgba(255, 255, 255, 0.35);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.12);
+}
+.stat-card:hover .stat-icon {
+  transform: scale(1.06);
+}
+.stat-icon {
+  transition: transform 0.3s ease;
+}
+
+/* Reducir movimiento: desactivar animaciones decorativas y suavizar hovers */
+@media (prefers-reduced-motion: reduce) {
+  .intro-badge {
+    animation: none;
+  }
+  .bc-emoji {
+    animation: none;
+  }
+  .aboutus-intro__visual:hover .aboutus-intro__img-wrap {
+    transform: none;
+  }
+  .vm-card:hover,
+  .tl-item:hover,
+  .hms-item:hover,
+  .history-mini-stats .hms-item:nth-child(even):hover,
+  .history-aside:hover .history-highlight-box,
+  .phil-card:hover,
+  .benefit-card:hover,
+  .benefits-grid .benefit-card:nth-child(even):hover,
+  .value-card:nth-child(odd):hover,
+  .value-card:nth-child(even):hover,
+  .stat-card:hover {
+    transform: none;
+  }
+  .vm-card:hover::before {
+    transform: none;
+  }
+  .vm-card:hover,
+  .hms-item:hover,
+  .phil-card:hover,
+  .benefit-card:hover,
+  .value-card:nth-child(odd):hover,
+  .value-card:nth-child(even):hover,
+  .stat-card:hover {
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+  }
+  .stat-card:hover .stat-icon,
+  .phil-card:hover .phil-icon {
+    transform: none;
+  }
+  .tl-item:hover .tl-year {
+    letter-spacing: 0.1em;
+  }
 }
