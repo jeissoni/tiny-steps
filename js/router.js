@@ -12,18 +12,18 @@
     activities: 'Activities | Tiny Steps Learning Center',
     team: 'Our Team | Tiny Steps Learning Center',
     testimonials: 'Testimonials | Tiny Steps Learning Center',
-    locations: 'Locations | Tiny Steps Learning Center',
     blog: 'Blog | Tiny Steps Learning Center',
     contact: 'Contact | Tiny Steps Learning Center'
   };
 
   function getRoute() {
     var hash = (global.location.hash || '#/').slice(1).replace(/^\//, '');
+    if (hash === 'locations') hash = 'contact';
     return hash || 'home';
   }
 
   function getViewPath(route) {
-    var allowed = ['home', 'aboutus', 'programs', 'activities', 'team', 'testimonials', 'locations', 'blog', 'contact'];
+    var allowed = ['home', 'aboutus', 'programs', 'activities', 'team', 'testimonials', 'blog', 'contact'];
     var name = allowed.indexOf(route) !== -1 ? route : 'home';
     return VIEWS_BASE + name + '.html';
   }

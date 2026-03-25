@@ -71,6 +71,76 @@
       alert('¡Gracias! We will contact you soon to confirm your tour. 🌱');
       form.reset();
     };
+    var submitBtn = form.querySelector('.contact-form-submit');
+    if (submitBtn) {
+      submitBtn.addEventListener('click', function (e) {
+        var r = document.createElement('span');
+        r.className = 'contact-form-ripple';
+        r.setAttribute('aria-hidden', 'true');
+        var rect = submitBtn.getBoundingClientRect();
+        var size = Math.max(rect.width, rect.height) * 2;
+        r.style.cssText =
+          'width:' +
+          size +
+          'px;height:' +
+          size +
+          'px;left:' +
+          (e.clientX - rect.left - size / 2) +
+          'px;top:' +
+          (e.clientY - rect.top - size / 2) +
+          'px';
+        submitBtn.appendChild(r);
+        setTimeout(function () {
+          if (r.parentNode) r.parentNode.removeChild(r);
+        }, 700);
+      });
+    }
+  }
+
+  var staggerObserver = null;
+
+  function initContactStagger() {
+    var app = document.getElementById('app');
+    if (!app) return;
+    var staggerEls = app.querySelectorAll('.stagger-children');
+    if (staggerEls.length === 0) return;
+    if (staggerObserver) {
+      staggerObserver.disconnect();
+    }
+    staggerObserver = new IntersectionObserver(
+      function (entries) {
+        entries.forEach(function (e) {
+          if (e.isIntersecting) {
+            e.target.classList.add('visible');
+            staggerObserver.unobserve(e.target);
+          }
+        });
+      },
+      { threshold: 0.12 }
+    );
+    staggerEls.forEach(function (el) {
+      el.classList.remove('visible');
+      staggerObserver.observe(el);
+      setTimeout(function () {
+        var rect = el.getBoundingClientRect();
+        if (rect.top < window.innerHeight && rect.bottom > 0) {
+          el.classList.add('visible');
+          staggerObserver.unobserve(el);
+        }
+      }, 50);
+    });
+  }
+
+  function initContactQuickCardSpotlight() {
+    var app = document.getElementById('app');
+    if (!app) return;
+    app.querySelectorAll('.contact-quick-card').forEach(function (card) {
+      card.addEventListener('mousemove', function (e) {
+        var r = card.getBoundingClientRect();
+        card.style.setProperty('--mx', e.clientX - r.left + 'px');
+        card.style.setProperty('--my', e.clientY - r.top + 'px');
+      });
+    });
   }
 
   function initParentsReviewsCarousel() {
@@ -256,7 +326,11 @@
     }
     if (route === 'programs' && window.TinyStepsPrograms) window.TinyStepsPrograms.init();
     if (route === 'testimonials') initTestimonialsSlider();
-    if (route === 'contact') initContactForm();
+    if (route === 'contact') {
+      initContactForm();
+      initContactStagger();
+      initContactQuickCardSpotlight();
+    }
     initFloatBtn();
   }
 
