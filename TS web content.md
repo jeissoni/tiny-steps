@@ -780,3 +780,46 @@ Classroom projects, decorations, seasonal themes, crafts, and day-to-day learnin
 ### Educator’s Corner
 
 Insights, reflections, teacher-written content, and learning resources from the Tiny Steps team.
+
+### Reseñas de padres 
+
+
+Rene Medina
+
+https://maps.app.goo.gl/btDS2HxGz895fwNNA
+
+My Daughter has been attending this daycare for about 2 years now and it was honestly the greatest decision enrolling her into this daycare the staff are welcoming , kind , patient, empathetic. My family and I recommend this daycare for any parents out there looking for a daycare. Lastly, I would like to give teacher Ms.Lina a huge THANK YOU for being kind, nurturing, patient, encouraging, and making my daughter feel safe. They share such a loving bond with one another and couldn’t be more thankful. Tiny steps is the way to go!
+
+
+
+
+Vanessa Ramos
+
+https://maps.app.goo.gl/DRKCCQ39pnRafpCdA
+
+Exceptional childcare. As a parent of a non-speaking aged child it’s stressful knowing they can’t voice any concerns throughout their day. With Tiny Steps I have a peace of mind that is hard to come by. Hands on and active schedules that are updated throughout the entire day everyday and exceptional staff that never disappoint . Ms. Lina is a phenomenal teacher who has taken my child leaps and bounds in their time together. She is truly an example of the highest standard of caring, kindness and compassion that a teacher could provide their students.
+
+
+Amaru Logan
+
+https://maps.app.goo.gl/KZFUinhkDHQ55hMy6
+
+I’m very grateful for the dedication and care my son’s teacher shows every day. They create a supportive and structured learning environment that helps students feel confident and motivated. My son has grown both academically and personally, and that speaks volumes about the teacher’s patience, communication, and commitment to their students’ success. I truly appreciate the impact they’ve had this year. Ms.Arisleida is a wonderful teacher
+
+
+
+
+Gery
+https://maps.app.goo.gl/smSrVVitpfedv6Dw6
+I would like to share that it was very difficult for me to leave my baby at a daycare center, and Tiny Steps Learning center was definitely my best option. I am very happy with the progress my baby is making, and above all, I would like to thank Miss Lina, who is the best at treating my baby with affection and love. I am a very observant, picky, and distrustful person, and believe me when I say that I am happy and, above all, my spirit is at peace knowing that my baby is in good hands.
+
+
+
+Mayelin liriano
+https://maps.app.goo.gl/MbU3eijMVt7KiAoQ6
+My child had been attending tiny steps learning center on mcbride for over a year. She has learned so much. She’s speaking clearly, putting sentences together, and potty training. The staff is truly amazing! Love all the great teachers specially Ms. Jenny and Ms. Lina!
+
+Iliyah onigbanjo
+https://maps.app.goo.gl/mPkgMBjYayH8s7HSA
+Hace 2 meses
+Me and my son Isaiah appreciates everyone in this facility. However , his favorite is Ms.Ventura.  The way she carries him and talks to him like her own.  Ever since he has entered the center he has learned how to walk faster , knows Spanish a little bit, & has grown in every aspect.
