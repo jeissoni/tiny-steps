@@ -143,131 +143,126 @@
     });
   }
 
-  function initParentsReviewsCarousel() {
-    var root = document.querySelector('.section-parents-reviews');
+  var homeReviewsAutoplay = null;
+  var homeReviewsResizeHandler = null;
+
+  function destroyHomeReviewsCarousel() {
+    if (homeReviewsAutoplay) {
+      clearInterval(homeReviewsAutoplay);
+      homeReviewsAutoplay = null;
+    }
+    if (homeReviewsResizeHandler) {
+      window.removeEventListener('resize', homeReviewsResizeHandler);
+      homeReviewsResizeHandler = null;
+    }
+  }
+
+  function initHomeReviewsCarousel() {
+    destroyHomeReviewsCarousel();
+
+    var root = document.querySelector('[data-reviews-carousel]');
     if (!root) return;
 
-    var cardsWrap = root.querySelector('.parents-reviews__cards[data-carousel="parents-reviews"]');
-    var dots = Array.prototype.slice.call(root.querySelectorAll('.parents-reviews__dot[data-index]'));
-    var img = root.querySelector('.parents-reviews__image');
-    if (!cardsWrap || dots.length === 0 || !img) return;
+    var viewport = root.querySelector('.reviews-carousel__viewport');
+    var track = root.querySelector('.reviews-carousel__track');
+    var slides = root.querySelectorAll('.reviews-carousel__slide');
+    var prevBtn = root.querySelector('.reviews-carousel__btn--prev');
+    var nextBtn = root.querySelector('.reviews-carousel__btn--next');
+    var dots = root.querySelectorAll('.reviews-carousel__dot');
+    if (!viewport || !track || slides.length === 0) return;
 
-    // 4 slides (una por bolita). Puedes cambiar textos/imagenes aquí cuando quieras.
-    var SLIDES = [
-      {
-        text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-        author: 'Luise Henrik',
-        role: 'Kid Parent',
-        image: 'images/test-281x300.webp'
-      },
-      {
-        text: 'Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
-        author: 'Luise Henrikes',
-        role: 'Kid Parent',
-        image: 'images/test-281x300.webp'
-      },
-      {
-        text: 'Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.',
-        author: 'Luise Henrikes2',
-        role: 'Kid Parent',
-        image: 'images/test-281x300.webp'
-      },
-      {
-        text: 'Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
-        author: 'New Parent',
-        role: 'Kid Parent',
-        image: 'images/test-281x300.webp'
-      }
-    ];
-
-    var slots = {
-      top: cardsWrap.querySelector('[data-slot="top"]'),
-      mid: cardsWrap.querySelector('[data-slot="mid"]'),
-      bottom: cardsWrap.querySelector('[data-slot="bottom"]')
-    };
-    if (!slots.top || !slots.mid || !slots.bottom) return;
-
+    var total = slides.length;
     var current = 0;
-    var isAnimating = false;
-    var ANIM_MS = 280;
+    var AUTO_MS = 7000;
+    var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-    function setCardContent(card, slide) {
-      var p = card.querySelector('.review-card__text');
-      var a = card.querySelector('.review-card__author');
-      var r = card.querySelector('.review-card__role');
-      if (p) p.textContent = slide.text;
-      if (a) a.textContent = slide.author;
-      if (r) r.textContent = slide.role;
+    function layout() {
+      var w = viewport.getBoundingClientRect().width;
+      if (w <= 0) return;
+      slides.forEach(function (s) {
+        s.style.flexBasis = w + 'px';
+        s.style.width = w + 'px';
+        s.style.minWidth = w + 'px';
+      });
+      track.style.width = w * total + 'px';
+      track.style.transform = 'translateX(' + -current * w + 'px)';
     }
 
-    function setVariant(card, variant) {
-      card.classList.remove('review-card--purple', 'review-card--orange');
-      card.classList.add(variant === 'orange' ? 'review-card--orange' : 'review-card--purple');
-    }
-
-    function render(index) {
-      var total = SLIDES.length;
-      var topIdx = (index - 1 + total) % total;
-      var midIdx = index % total;
-      var bottomIdx = (index + 1) % total;
-
-      setVariant(slots.top, 'purple');
-      setVariant(slots.mid, 'orange');
-      setVariant(slots.bottom, 'purple');
-
-      setCardContent(slots.top, SLIDES[topIdx]);
-      setCardContent(slots.mid, SLIDES[midIdx]);
-      setCardContent(slots.bottom, SLIDES[bottomIdx]);
-
-      img.src = SLIDES[midIdx].image;
-    }
-
-    function setActiveDot(index) {
-      dots.forEach(function (d) {
-        var isActive = String(index) === d.getAttribute('data-index');
-        d.classList.toggle('parents-reviews__dot--active', isActive);
-        d.setAttribute('aria-selected', isActive ? 'true' : 'false');
+    function goTo(index) {
+      current = (index % total + total) % total;
+      var w = viewport.getBoundingClientRect().width;
+      if (w <= 0) return;
+      track.style.transform = 'translateX(' + -current * w + 'px)';
+      dots.forEach(function (d, i) {
+        var on = i === current;
+        d.classList.toggle('is-active', on);
+        d.setAttribute('aria-selected', on ? 'true' : 'false');
       });
     }
 
-    function slideTo(nextIndex) {
-      if (isAnimating) return;
-      if (nextIndex === current) return;
-
-      var dir = nextIndex > current ? 'up' : 'down';
-      isAnimating = true;
-      cardsWrap.classList.add('is-animating');
-      cardsWrap.classList.remove('slide-up', 'slide-down');
-      cardsWrap.classList.add(dir === 'up' ? 'slide-up' : 'slide-down');
-
-      setTimeout(function () {
-        current = nextIndex;
-        render(current);
-        setActiveDot(current);
-        cardsWrap.classList.remove('slide-up', 'slide-down');
-        // Small reflow-safe delay to avoid flicker on some browsers
-        setTimeout(function () {
-          cardsWrap.classList.remove('is-animating');
-          isAnimating = false;
-        }, 20);
-      }, ANIM_MS);
+    function next() {
+      goTo(current + 1);
+    }
+    function prev() {
+      goTo(current - 1);
     }
 
-    // Initial paint based on active dot (fallback to 0)
-    var initialDot = root.querySelector('.parents-reviews__dot--active[data-index]');
-    current = initialDot ? parseInt(initialDot.getAttribute('data-index'), 10) || 0 : 0;
-    render(current);
-    setActiveDot(current);
+    function startAutoplay() {
+      if (reduceMotion) return;
+      if (homeReviewsAutoplay) clearInterval(homeReviewsAutoplay);
+      homeReviewsAutoplay = setInterval(next, AUTO_MS);
+    }
 
-    // Delegated click
-    root.addEventListener('click', function (e) {
-      var btn = e.target.closest('.parents-reviews__dot[data-index]');
-      if (!btn) return;
-      e.preventDefault();
-      var idx = parseInt(btn.getAttribute('data-index'), 10);
-      if (isNaN(idx)) return;
-      slideTo(idx);
+    if (prevBtn) {
+      prevBtn.addEventListener('click', function () {
+        prev();
+        startAutoplay();
+      });
+    }
+    if (nextBtn) {
+      nextBtn.addEventListener('click', function () {
+        next();
+        startAutoplay();
+      });
+    }
+
+    root.tabIndex = 0;
+    root.addEventListener('keydown', function (e) {
+      if (e.key === 'ArrowLeft') {
+        e.preventDefault();
+        prev();
+        startAutoplay();
+      } else if (e.key === 'ArrowRight') {
+        e.preventDefault();
+        next();
+        startAutoplay();
+      }
     });
+    dots.forEach(function (d) {
+      d.addEventListener('click', function () {
+        var idx = parseInt(d.getAttribute('data-slide'), 10);
+        if (!isNaN(idx)) goTo(idx);
+        startAutoplay();
+      });
+    });
+
+    root.addEventListener('mouseenter', function () {
+      if (homeReviewsAutoplay) clearInterval(homeReviewsAutoplay);
+    });
+    root.addEventListener('mouseleave', startAutoplay);
+
+    homeReviewsResizeHandler = function () {
+      layout();
+    };
+    window.addEventListener('resize', homeReviewsResizeHandler);
+
+    layout();
+    goTo(0);
+    requestAnimationFrame(function () {
+      layout();
+    });
+
+    startAutoplay();
   }
 
   var heroBgInterval = null;
@@ -319,10 +314,13 @@
     var route = (detail && detail.route) || (window.TinyStepsRouter && window.TinyStepsRouter.getRoute()) || 'home';
     setNavActive(route);
     if (heroBgInterval) { clearInterval(heroBgInterval); heroBgInterval = null; }
+    if (route !== 'home') {
+      destroyHomeReviewsCarousel();
+    }
     initReveal();
     if (route === 'home') {
       initHeroBgSlider();
-      initParentsReviewsCarousel();
+      initHomeReviewsCarousel();
     }
     if (route === 'programs' && window.TinyStepsPrograms) window.TinyStepsPrograms.init();
     if (route === 'testimonials') initTestimonialsSlider();
