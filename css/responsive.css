@@ -39,9 +39,6 @@
   body.nav-open .nav-links > li > a.nav-cta {
     justify-content: center;
   }
-  body.nav-open .dropdown { position: static; box-shadow: none; border: none; padding: 0 0 0 1rem; margin-top: 0.25rem; }
-  body.nav-open .nav-links > li:hover .dropdown { display: none; }
-  body.nav-open .nav-links > li.has-open .dropdown { display: block; }
 
   .aboutus-grid--four { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .aboutus-grid--three { grid-template-columns: repeat(2, minmax(0, 1fr)); }
