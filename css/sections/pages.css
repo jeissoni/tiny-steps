@@ -52,33 +52,6 @@
 }
 .slider-btn:hover { background: var(--yellow); }
 
-/* ─── BLOG ───────────────────────────────────────── */
-.blog { background: var(--light); }
-.blog-grid {
-  display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-  gap: 1.5rem; margin-top: 3rem;
-}
-.blog-card {
-  background: #fff; border-radius: var(--radius);
-  overflow: hidden; box-shadow: 0 2px 12px rgba(30,27,46,.07);
-  transition: transform .2s;
-}
-.blog-card:hover { transform: translateY(-4px); }
-.blog-thumb {
-  height: 180px; display: flex; align-items: center; justify-content: center;
-  font-size: 4rem;
-}
-.blog-thumb.b1 { background: linear-gradient(135deg, #FFE9E9, #FFD0D0); }
-.blog-thumb.b2 { background: linear-gradient(135deg, #E9FFF9, #C8FFF2); }
-.blog-thumb.b3 { background: linear-gradient(135deg, #FFF9E9, #FFEFC8); }
-.blog-thumb.b4 { background: linear-gradient(135deg, #F0E9FF, #E0D0FF); }
-.blog-body { padding: 1.5rem; }
-.blog-date { font-size: .78rem; color: var(--coral); font-weight: 700; margin-bottom: .5rem; }
-.blog-card h3 { font-size: 1rem; font-weight: 800; color: var(--dark); margin-bottom: .5rem; line-height: 1.4; }
-.blog-card p  { font-size: .85rem; color: var(--mid); line-height: 1.6; margin-bottom: 1rem; }
-.blog-link { font-size: .85rem; font-weight: 800; color: var(--coral); }
-.blog-link:hover { text-decoration: underline; }
-
 /* ─── ABOUT US ───────────────────────────────────── */
 .aboutus-intro {
   background: linear-gradient(135deg, #f8f4ff 0%, #fff7ef 100%);
