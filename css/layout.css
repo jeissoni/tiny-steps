@@ -15,7 +15,7 @@
 }
 .bg-shapes .shape-s1 { width: 180px; height: 180px; background: var(--coral);   top: 5%;   left: 3%;   animation-duration: 18s; }
 .bg-shapes .shape-s2 { width: 120px; height: 120px; background: var(--sky);     top: 15%;  right: 8%;  animation-duration: 22s; animation-delay: -6s; }
-.bg-shapes .shape-s3 { width: 220px; height: 220px; background: var(--yellow);  top: 40%;  left: 1%;   animation-duration: 26s; animation-delay: -10s; }
+.bg-shapes .shape-s3 { width: 220px; height: 220px; background: var(--sky);    top: 40%;  left: 1%;   animation-duration: 26s; animation-delay: -10s; }
 .bg-shapes .shape-s4 { width: 90px;  height: 90px;  background: var(--mint);     top: 60%;  right: 5%;  animation-duration: 20s; animation-delay: -3s; }
 .bg-shapes .shape-s5 { width: 150px; height: 150px; background: var(--green);   top: 80%;  left: 15%;  animation-duration: 24s; animation-delay: -14s; }
 .bg-shapes .shape-s6 { width: 100px; height: 100px; background: var(--lavender); top: 25%;  left: 45%;  animation-duration: 30s; animation-delay: -8s; }

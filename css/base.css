@@ -38,10 +38,11 @@
   --green:   #8bc53d;
   --orange:  #f2812a;
   --red:     #ec3f2e;
-  --cream:   #FFF9F0;
+  /* Fondo principal: azul muy claro (familia --sky) en lugar de crema/amarillo */
+  --cream:   #eef6fc;
   --dark:    #1E1B2E;
   --mid:     #4A4565;
-  --light:   #F8F4FF;
+  --light:   #f3f8fc;
   --radius:  1.2rem;
   --shadow:  0 8px 32px rgba(30,27,46,.12);
 }

@@ -390,8 +390,8 @@
 
 /* ── TRANSPORT NOTE ── */
 .transport-note {
-  background: linear-gradient(135deg, #fffbe6, #fff3cd);
-  border: 2px dashed var(--yellow);
+  background: linear-gradient(135deg, #eef6fc, #ddeaf6);
+  border: 2px dashed rgba(0, 131, 218, 0.45);
   border-radius: 20px;
   padding: 1.4rem 2rem;
   display: flex;
