@@ -10,10 +10,7 @@
     var app = document.getElementById('app');
     if (!app) return;
     var reveals = app.querySelectorAll('.reveal');
-    if (reveals.length === 0) {
-      console.warn('No .reveal elements found');
-      return;
-    }
+    if (reveals.length === 0) return;
     if (!revealObserver) {
       revealObserver = new IntersectionObserver(function (entries) {
         entries.forEach(function (e) {
@@ -293,7 +290,6 @@
     floatBtn.onclick = function () {
       if (window.TinyStepsRouter) {
         window.TinyStepsRouter.navigate('contact');
-        window.location.hash = '#/contact';
       }
       setTimeout(function () {
         var contact = document.getElementById('contact');
@@ -303,10 +299,16 @@
   }
 
   function setNavActive(route) {
-    var links = document.querySelectorAll('.nav-links a[href^="#/"]:not(.nav-cta)');
+    var parse = window.TinyStepsRouter && window.TinyStepsRouter.parseHrefToRoute;
+    if (!parse) return;
+    var links = document.querySelectorAll(
+      '.nav-links a[href^="/"], .nav-links a[href^="#/"]'
+    );
     links.forEach(function (a) {
-      var href = (a.getAttribute('href') || '').replace('#/', '');
-      a.classList.toggle('active', href === route || (href === 'home' && !route));
+      if (a.classList.contains('nav-cta')) return;
+      var key = parse(a.getAttribute('href') || '');
+      if (key === null) return;
+      a.classList.toggle('active', key === route);
     });
   }
 
@@ -317,12 +319,12 @@
     if (route !== 'home') {
       destroyHomeReviewsCarousel();
     }
+    if (route === 'programs' && window.TinyStepsPrograms) window.TinyStepsPrograms.init();
     initReveal();
     if (route === 'home') {
       initHeroBgSlider();
       initHomeReviewsCarousel();
     }
-    if (route === 'programs' && window.TinyStepsPrograms) window.TinyStepsPrograms.init();
     if (route === 'testimonials') initTestimonialsSlider();
     if (route === 'contact') {
       initContactForm();

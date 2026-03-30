@@ -21,22 +21,9 @@
       updateProgress();
     }
 
-    /* ── 2. SCROLL REVEAL ── */
-    var revealEls = app.querySelectorAll('.reveal');
-    var revealObs = new IntersectionObserver(function (entries) {
-      entries.forEach(function (e) {
-        if (e.isIntersecting) {
-          e.target.classList.add('visible');
-          revealObs.unobserve(e.target);
-        }
-      });
-    }, { threshold: 0.15 });
-    revealEls.forEach(function (el) { revealObs.observe(el); });
-
-    var miscEls = app.querySelectorAll('.intro-strip, .transport-note, .programs-cta');
-    miscEls.forEach(function (el) {
+    /* ── 2. Clases reveal en bloques sin .reveal en HTML (initReveal en app.js corre después) ── */
+    app.querySelectorAll('.intro-strip, .transport-note, .programs-cta').forEach(function (el) {
       el.classList.add('reveal', 'scale-in');
-      revealObs.observe(el);
     });
 
     /* ── 3. QUICK-NAV CLICK → SCROLL TO SECTION ── */
