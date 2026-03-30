@@ -2,9 +2,125 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
+  <!-- Raíz del sitio: las vistas inyectadas usan rutas relativas (./images/...); sin esto fallan en URLs como /programs. -->
+  <base href="/" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <!-- URL pública del sitio en producción (OG, canonical, JSON-LD). -->
+  <meta name="site-origin" content="https://tinysteps.io" />
+  <meta name="description" id="meta-description" content="Tiny Steps Learning Center offers nurturing early childhood education in Paterson, NJ — ages 6 weeks to 5 years. Schedule a tour or enroll today." />
+  <meta name="robots" content="index, follow" />
+  <meta name="theme-color" content="#ec316c" />
   <link rel="icon" href="./images/cropped-logo-head.png" type="image/png" />
+  <link rel="canonical" id="link-canonical" href="https://tinysteps.io/" />
   <title>Tiny Steps Learning Center</title>
+  <meta property="og:site_name" content="Tiny Steps Learning Center" />
+  <meta property="og:type" content="website" />
+  <meta property="og:locale" content="en_US" />
+  <meta property="og:title" id="meta-og-title" content="Home | Tiny Steps Learning Center" />
+  <meta property="og:description" id="meta-og-description" content="Tiny Steps Learning Center offers nurturing early childhood education in Paterson, NJ — ages 6 weeks to 5 years. Schedule a tour or enroll today." />
+  <meta property="og:url" id="meta-og-url" content="https://tinysteps.io/" />
+  <meta property="og:image" id="meta-og-image" content="https://tinysteps.io/images/cropped-logo-head.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" id="meta-tw-title" content="Home | Tiny Steps Learning Center" />
+  <meta name="twitter:description" id="meta-tw-description" content="Tiny Steps Learning Center offers nurturing early childhood education in Paterson, NJ — ages 6 weeks to 5 years. Schedule a tour or enroll today." />
+  <meta name="twitter:image" id="meta-tw-image" content="https://tinysteps.io/images/cropped-logo-head.png" />
+  <!-- JSON-LD: direcciones y horarios según TS web content.md (Locations) -->
+  <script type="application/ld+json" id="jsonld-localbusiness">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "EducationalOrganization",
+        "@id": "https://tinysteps.io/#organization",
+        "name": "Tiny Steps Learning Center",
+        "description": "Early childhood education and childcare programs at three Paterson, New Jersey locations.",
+        "url": "https://tinysteps.io/",
+        "telephone": "+1-973-523-5883",
+        "image": [
+          "https://tinysteps.io/images/Logo-Tiny-1-removebg.png",
+          "https://tinysteps.io/images/cropped-logo-head.png"
+        ],
+        "sameAs": [
+          "https://www.facebook.com/tinystepslearningcenter",
+          "https://www.instagram.com/tinystepslearningcenter/",
+          "https://www.tiktok.com/@tinystepslearningcenter",
+          "https://www.linkedin.com/company/tiny-steps-learning-center"
+        ],
+        "subOrganization": [
+          { "@id": "https://tinysteps.io/#location-mcbride" },
+          { "@id": "https://tinysteps.io/#location-union" },
+          { "@id": "https://tinysteps.io/#location-paterson-ave" }
+        ]
+      },
+      {
+        "@type": "ChildCare",
+        "@id": "https://tinysteps.io/#location-mcbride",
+        "name": "Tiny Steps Learning Center — McBride Ave",
+        "parentOrganization": { "@id": "https://tinysteps.io/#organization" },
+        "description": "Largest center; opened 2019. Spacious classrooms and administrative office.",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "31 McBride Ave Ext",
+          "addressLocality": "Paterson",
+          "addressRegion": "NJ",
+          "postalCode": "07501",
+          "addressCountry": "US"
+        },
+        "geo": {
+          "@type": "GeoCoordinates",
+          "latitude": 40.9153627,
+          "longitude": -74.1791056
+        },
+        "openingHoursSpecification": [
+          {
+            "@type": "OpeningHoursSpecification",
+            "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+            "opens": "07:00",
+            "closes": "17:30"
+          }
+        ]
+      },
+      {
+        "@type": "ChildCare",
+        "@id": "https://tinysteps.io/#location-union",
+        "name": "Tiny Steps Learning Center — Union Ave",
+        "parentOrganization": { "@id": "https://tinysteps.io/#organization" },
+        "description": "Opened 2022. Warm setting with added space for community-focused learning.",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "186 Union Ave",
+          "addressLocality": "Paterson",
+          "addressRegion": "NJ",
+          "postalCode": "07502",
+          "addressCountry": "US"
+        },
+        "openingHoursSpecification": [
+          {
+            "@type": "OpeningHoursSpecification",
+            "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+            "opens": "07:00",
+            "closes": "17:30"
+          }
+        ]
+      },
+      {
+        "@type": "ChildCare",
+        "@id": "https://tinysteps.io/#location-paterson-ave",
+        "name": "Tiny Steps Learning Center — Paterson Ave",
+        "parentOrganization": { "@id": "https://tinysteps.io/#organization" },
+        "description": "First Tiny Steps location (2015). Temporarily closed; planned reopening 2026. Planned hours upon reopening: Monday–Friday 6:30 AM–6:30 PM.",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "150 Paterson Ave",
+          "addressLocality": "Paterson",
+          "addressRegion": "NJ",
+          "postalCode": "07502",
+          "addressCountry": "US"
+        }
+      }
+    ]
+  }
+  </script>
   <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;500;600;700;800&family=Fredoka:wght@500;600;700&display=swap" rel="stylesheet"/>
   <link rel="stylesheet" href="./css/main.css"/>
 </head>
@@ -22,21 +138,21 @@
 
 <!-- Announcement Bar -->
 <div class="topbar">
-  🎉 Limited spaces remain for 2025-26! <a href="#/contact">Schedule a Tour Today →</a>
+  🎉 Limited spaces remain for 2025-26! <a href="/contact">Schedule a Tour Today →</a>
 </div>
 
 <!-- Header -->
 <header>
   <nav>
-    <a href="#/home" class="logo">
+    <a href="/" class="logo">
       <img src="./images/Logo-Tiny-1-removebg.png" alt="Tiny Steps Learning Center Logo" />
     </a>
     <ul class="nav-links">
-      <li><a href="#/home">Home</a></li>
-      <li><a href="#/aboutus">About</a></li>
-      <li><a href="#/programs">Programs</a></li>
-      <li><a href="#/contact">Contact</a></li>
-      <li><a href="#/contact" class="nav-cta">Enroll Now</a></li>
+      <li><a href="/">Home</a></li>
+      <li><a href="/aboutus">About</a></li>
+      <li><a href="/programs">Programs</a></li>
+      <li><a href="/contact">Contact</a></li>
+      <li><a href="/contact" class="nav-cta">Enroll Now</a></li>
     </ul>
     <button type="button" class="hamburger" id="hamburger" aria-label="Abrir menú">☰</button>
   </nav>
@@ -62,7 +178,7 @@
           <svg class="footer-contact-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="currentColor" d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
           <span>WhatsApp</span>
         </a>
-        <a href="#/contact" class="footer-contact-link">
+        <a href="/contact" class="footer-contact-link">
           <svg class="footer-contact-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="currentColor" d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
           <span>Contact page</span>
         </a>
@@ -98,20 +214,19 @@
     <div class="footer-col">
       <h4>Discover</h4>
       <ul>
-        <li><a href="#/aboutus">About Us</a></li>
-        <li><a href="#/programs">Programs</a></li>
-        <li><a href="#/contact">Contact</a></li>
-        <li><a href="#/blog">Blog</a></li>
+        <li><a href="/aboutus">About Us</a></li>
+        <li><a href="/programs">Programs</a></li>
+        <li><a href="/contact">Contact</a></li>
         <li><a href="mailto:hiring@tinysteps.io?subject=Career%20Inquiry">Careers</a></li>
       </ul>
     </div>
     <div class="footer-col">
       <h4>Getting Started</h4>
       <ul>
-        <li><a href="#/contact">Schedule a Tour</a></li>
-        <li><a href="#/contact">Enroll Now</a></li>
-        <li><a href="#/programs">Drop-in Care</a></li>
-        <li><a href="#/programs">Summer Camp</a></li>
+        <li><a href="/contact">Schedule a Tour</a></li>
+        <li><a href="/contact">Enroll Now</a></li>
+        <li><a href="/programs">Drop-in Care</a></li>
+        <li><a href="/programs">Summer Camp</a></li>
       </ul>
     </div>
     <div class="footer-col">
@@ -119,9 +234,8 @@
       <ul>
         <li><a href="#">Parent Portal</a></li>
         <li><a href="#">Renew Enrollment</a></li>
-        <li><a href="#/contact">Resources &amp; questions</a></li>
-        <li><a href="#/contact">Refer a Friend</a></li>
-        <li><a href="#/blog">News &amp; events</a></li>
+        <li><a href="/contact">Resources &amp; questions</a></li>
+        <li><a href="/contact">Refer a Friend</a></li>
       </ul>
     </div>
   </div>
