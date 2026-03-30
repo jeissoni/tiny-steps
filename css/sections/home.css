@@ -159,9 +159,33 @@
 .hero-contact-banner--dark .hero-iconbox-title a { color: var(--dark); text-decoration: none; }
 .hero-contact-banner--dark .hero-iconbox-title a:hover { color: var(--coral); }
 .hero-contact-banner--dark .hero-iconbox-desc { display: flex; flex-direction: column; gap: .15rem; }
-.hero-contact-banner--dark .hero-iconbox-link { color: var(--mid); font-size: .82rem; text-decoration: none; transition: color .2s; }
+.hero-contact-banner--dark .hero-iconbox-link {
+  color: var(--mid);
+  font-size: .82rem;
+  text-decoration: none;
+  transition: color .2s;
+  white-space: normal; /* anula nowrap global de .hero-iconbox-link para texto multilínea centrado */
+}
 .hero-contact-banner--dark .hero-iconbox-link:hover { color: var(--coral); }
 .hero-contact-banner--dark .hero-iconbox-muted { color: var(--mid); font-size: .78rem; opacity: .8; }
+
+/* Chat / ubicación: alineación solo en vista ancha; en móvil el bloque general usa centrado */
+@media (min-width: 901px) {
+  .hero-contact-banner--dark .hero-iconbox--reverse .hero-iconbox-content {
+    text-align: right;
+  }
+  .hero-contact-banner--dark .hero-iconbox--reverse .hero-iconbox-desc {
+    align-items: flex-end;
+    justify-content: flex-start;
+  }
+  .hero-contact-banner--dark .hero-iconbox:not(.hero-iconbox--reverse) .hero-iconbox-content {
+    text-align: left;
+  }
+  .hero-contact-banner--dark .hero-iconbox:not(.hero-iconbox--reverse) .hero-iconbox-desc {
+    align-items: flex-start;
+    justify-content: flex-start;
+  }
+}
 
 /* Legacy hero-contact-banner (for about-summary etc.) */
 .hero-contact-banner:not(.hero-contact-banner--dark) {
@@ -912,13 +936,27 @@
   .hero-img-ring { max-width: 280px; }
   .hero-contact-banner--dark {
     flex-direction: column;
+    align-items: stretch;
     margin: 0 1rem 1.5rem;
+    text-align: center;
   }
   .hero-contact-banner--dark .hero-iconbox {
     border-right: none;
     border-bottom: 1px solid rgba(236,49,108,0.12);
     min-width: auto;
     max-width: none;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 1.1rem 1.2rem;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+  .hero-contact-banner--dark .hero-iconbox-icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
   }
   .hero-contact-banner--dark .hero-iconbox:first-child { border-radius: 24px 24px 0 0; }
   .hero-contact-banner--dark .hero-iconbox:last-child {
