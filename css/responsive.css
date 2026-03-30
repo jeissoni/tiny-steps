@@ -76,7 +76,7 @@
     width: 94%;
     max-width: 520px;
     margin: 1rem auto 0;
-    padding: 1rem 1.1rem;
+    padding: 1rem 1rem;
     z-index: 5;
   }
   .hero-contact-banner {
@@ -123,6 +123,79 @@
   .hero-iconbox-link {
     word-break: break-word;
     overflow-wrap: anywhere;
+  }
+
+  /* Banner oscuro del hero: grid + ligero translateX para centrado óptico */
+  .hero-contact-banner.hero-contact-banner--dark .hero-iconbox,
+  .hero > .hero-contact-banner.hero-contact-banner--dark .hero-iconbox {
+    display: grid !important;
+    grid-template-columns: 1fr;
+    justify-items: center !important;
+    align-content: start;
+    transform: translateX(3px);
+  }
+  /* Segundo bloque: + .hero-iconbox aplica padding-left: 0 (strip claro) y rompe simetría del banner oscuro */
+  .hero-contact-banner.hero-contact-banner--dark .hero-iconbox + .hero-iconbox,
+  .hero > .hero-contact-banner.hero-contact-banner--dark .hero-iconbox + .hero-iconbox {
+    padding-inline: 1.2rem !important;
+    transform: none;
+  }
+  .hero-contact-banner.hero-contact-banner--dark .hero-iconbox .hero-iconbox-content,
+  .hero > .hero-contact-banner.hero-contact-banner--dark .hero-iconbox .hero-iconbox-content {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    text-align: center !important;
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+  }
+  .hero-contact-banner.hero-contact-banner--dark .hero-iconbox .hero-iconbox-title,
+  .hero > .hero-contact-banner.hero-contact-banner--dark .hero-iconbox .hero-iconbox-title {
+    width: 100% !important;
+    text-align: center !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+  }
+  .hero-contact-banner.hero-contact-banner--dark .hero-iconbox .hero-iconbox-title a,
+  .hero > .hero-contact-banner.hero-contact-banner--dark .hero-iconbox .hero-iconbox-title a {
+    display: block !important;
+    width: 100% !important;
+    text-align: center !important;
+  }
+  .hero-contact-banner.hero-contact-banner--dark .hero-iconbox .hero-iconbox-desc,
+  .hero > .hero-contact-banner.hero-contact-banner--dark .hero-iconbox .hero-iconbox-desc {
+    align-items: center !important;
+    justify-content: center !important;
+    text-align: center !important;
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+  }
+  .hero-contact-banner.hero-contact-banner--dark .hero-iconbox .hero-iconbox-link,
+  .hero > .hero-contact-banner.hero-contact-banner--dark .hero-iconbox .hero-iconbox-link {
+    display: block !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    text-align: center !important;
+    white-space: normal !important;
+    box-sizing: border-box;
+  }
+  .hero-contact-banner.hero-contact-banner--dark .hero-iconbox .hero-iconbox-muted,
+  .hero > .hero-contact-banner.hero-contact-banner--dark .hero-iconbox .hero-iconbox-muted {
+    display: block !important;
+    width: 100% !important;
+    text-align: center !important;
+    box-sizing: border-box;
+  }
+
+  .hero .hero-contact-banner.hero-contact-banner--dark {
+    padding-inline: 1.1rem;
+    box-sizing: border-box;
+  }
+  .hero-contact-banner.hero-contact-banner--dark .hero-iconbox .hero-iconbox-content,
+  .hero > .hero-contact-banner.hero-contact-banner--dark .hero-iconbox .hero-iconbox-content {
+    margin-inline: auto;
   }
 
   .aboutus-grid--two,
