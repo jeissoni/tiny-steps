@@ -29,8 +29,8 @@ Referencias de producto y contenido:
 
 ## Qué hay implementado (resumen)
 
-- Rutas SPA en `js/router.js`: `home`, `aboutus`, `programs`, `activities`, `team`, `testimonials`, `blog`, `contact`.
-- Cabecera actual (`index.html`): Home, About, Programs, Contact (+ CTA Enroll). **No** aparecen en el menú superior: Locations, Careers, Blog (aunque algunas rutas existen).
+- Rutas SPA en `js/router.js`: `home`, `aboutus`, `programs`, `activities`, `team`, `testimonials`, `contact` (la ruta `#/blog` redirige a home; no hay vista de blog).
+- Cabecera actual (`index.html`): Home, About, Programs, Contact (+ CTA Enroll). **No** aparecen en el menú superior: Locations, Careers (aunque algunas rutas existen).
 - `#/locations` se redirige a la vista **contact** (no hay página “Locations” dedicada).
 - **Contact**: acciones rápidas, centros, mapa, formulario, redes (alineado en gran parte con TS).
 
@@ -44,7 +44,7 @@ Comparado con `TS web content.md` y `TS web developer 1.md`, esto es lo que falt
 
 | Especificación TS | Estado actual |
 |-------------------|----------------|
-| Orden nav: Home → About → Programs → **Locations** → **Careers** → **Blog** → Contact | Falta **Locations**, **Careers** y **Blog** como ítems del menú principal. |
+| Orden nav: Home → About → Programs → **Locations** → **Careers** → Contact | Falta **Locations** y **Careers** como ítems del menú principal. Blog no está en el sitio (evitar thin content hasta tener artículos). |
 | Dropdowns con subenlaces (desktop) y comportamiento móvil descrito en TS dev | Sin mega-menús / dropdowns según spec. |
 | Evitar redirects innecesarios (nota TS dev §16) | Hash `#/locations` → `contact` es un redirect intencional. |
 
@@ -82,13 +82,6 @@ Comparado con `TS web content.md` y `TS web developer 1.md`, esto es lo que falt
 |----------------|--------|
 | Página o sección con “Apply Here”, mensaje *Application Portal Coming Soon*, `hiring@tinysteps.io` | No hay ruta `#/careers`; solo enlaces externos / Contact. |
 
-### Blog
-
-| Especificación content / dev | Estado |
-|-------------------------------|--------|
-| Calendar, News, Social feed, Community, From Our Classrooms, Educator’s Corner | `views/blog.html` suele ser **placeholder**; sin calendario ni secciones reales del MD. |
-| TS dev: plugin de calendario, filtros, hashtags, etc. | No aplicado (sitio estático). |
-
 ### Contact
 
 | Especificación | Estado |
@@ -110,11 +103,11 @@ Comparado con `TS web content.md` y `TS web developer 1.md`, esto es lo que falt
 
 ## Próximos pasos sugeridos (prioridad)
 
-1. Completar **Blog** o marcar como “próximamente” con estructura mínima del MD.  
-2. Añadir **Partners** + **Our Commitment** + **FAQs** + **Resources** (aunque sea una página cada una o anclas en About).  
-3. Decidir: **página Locations** dedicada vs. solo Contact (y alinear con TS dev).  
-4. **Careers** (`#/careers`) con copy del MD.  
-5. **Store** y **Referral** como páginas “Coming Soon” + CTA.
+1. Añadir **Partners** + **Our Commitment** + **FAQs** + **Resources** (aunque sea una página cada una o anclas en About).  
+2. Decidir: **página Locations** dedicada vs. solo Contact (y alinear con TS dev).  
+3. **Careers** (`#/careers`) con copy del MD.  
+4. **Store** y **Referral** como páginas “Coming Soon” + CTA.  
+5. (Cuando haya contenido real) **Blog** como sección nueva + `views/blog.html` y enlaces en footer.
 
 ---
 
