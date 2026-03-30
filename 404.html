@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <!-- GitHub Pages proyecto: p.ej. content="/Tiny-Steps" (nombre del repo). Vacío = autodetección. -->
+  <meta name="site-base-path" content="" />
+  <script>
+(function () {
+  var ROUTES = ['home','aboutus','programs','activities','team','testimonials','contact'];
+  var meta = document.querySelector('meta[name="site-base-path"]');
+  var base = '';
+  if (meta) {
+    var raw = (meta.getAttribute('content') || '').trim();
+    if (raw) {
+      base = raw.charAt(0) === '/' ? raw : '/' + raw;
+      base = base.replace(/\/$/, '');
+    }
+  }
+  if (!base) {
+    var parts = location.pathname.split('/').filter(Boolean);
+    if (parts.length && ROUTES.indexOf(parts[0]) === -1) {
+      base = '/' + parts[0];
+    }
+  }
+  window.__TINY_STEPS_BASE__ = base;
+  var b = document.createElement('base');
+  b.href = base ? base + '/' : '/';
+  var charset = document.head.querySelector('meta[charset]');
+  if (charset) charset.insertAdjacentElement('afterend', b);
+})();
+  </script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <!-- URL pública del sitio en producción (OG, canonical, JSON-LD). -->
+  <meta name="site-origin" content="https://tinysteps.io" />
+  <meta name="description" id="meta-description" content="Tiny Steps Learning Center offers nurturing early childhood education in Paterson, NJ — ages 6 weeks to 5 years. Schedule a tour or enroll today." />
+  <meta name="robots" content="index, follow" />
+  <meta name="theme-color" content="#ec316c" />
+  <link rel="icon" href="./images/cropped-logo-head.png" type="image/png" />
+  <link rel="canonical" id="link-canonical" href="https://tinysteps.io/" />
+  <title>Tiny Steps Learning Center</title>
+  <meta property="og:site_name" content="Tiny Steps Learning Center" />
+  <meta property="og:type" content="website" />
+  <meta property="og:locale" content="en_US" />
+  <meta property="og:title" id="meta-og-title" content="Home | Tiny Steps Learning Center" />
+  <meta property="og:description" id="meta-og-description" content="Tiny Steps Learning Center offers nurturing early childhood education in Paterson, NJ — ages 6 weeks to 5 years. Schedule a tour or enroll today." />
+  <meta property="og:url" id="meta-og-url" content="https://tinysteps.io/" />
+  <meta property="og:image" id="meta-og-image" content="https://tinysteps.io/images/cropped-logo-head.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" id="meta-tw-title" content="Home | Tiny Steps Learning Center" />
+  <meta name="twitter:description" id="meta-tw-description" content="Tiny Steps Learning Center offers nurturing early childhood education in Paterson, NJ — ages 6 weeks to 5 years. Schedule a tour or enroll today." />
+  <meta name="twitter:image" id="meta-tw-image" content="https://tinysteps.io/images/cropped-logo-head.png" />
+  <!-- JSON-LD: direcciones y horarios según TS web content.md (Locations) -->
+  <script type="application/ld+json" id="jsonld-localbusiness">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "EducationalOrganization",
+        "@id": "https://tinysteps.io/#organization",
+        "name": "Tiny Steps Learning Center",
+        "description": "Early childhood education and childcare programs at three Paterson, New Jersey locations.",
+        "url": "https://tinysteps.io/",
+        "telephone": "+1-973-523-5883",
+        "image": [
+          "https://tinysteps.io/images/Logo-Tiny-1-removebg.png",
+          "https://tinysteps.io/images/cropped-logo-head.png"
+        ],
+        "sameAs": [
+          "https://www.facebook.com/tinystepslearningcenter",
+          "https://www.instagram.com/tinystepslearningcenter/",
+          "https://www.tiktok.com/@tinystepslearningcenter",
+          "https://www.linkedin.com/company/tiny-steps-learning-center"
+        ],
+        "subOrganization": [
+          { "@id": "https://tinysteps.io/#location-mcbride" },
+          { "@id": "https://tinysteps.io/#location-union" },
+          { "@id": "https://tinysteps.io/#location-paterson-ave" }
+        ]
+      },
+      {
+        "@type": "ChildCare",
+        "@id": "https://tinysteps.io/#location-mcbride",
+        "name": "Tiny Steps Learning Center — McBride Ave",
+        "parentOrganization": { "@id": "https://tinysteps.io/#organization" },
+        "description": "Largest center; opened 2019. Spacious classrooms and administrative office.",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "31 McBride Ave Ext",
+          "addressLocality": "Paterson",
+          "addressRegion": "NJ",
+          "postalCode": "07501",
+          "addressCountry": "US"
+        },
+        "geo": {
+          "@type": "GeoCoordinates",
+          "latitude": 40.9153627,
+          "longitude": -74.1791056
+        },
+        "openingHoursSpecification": [
+          {
+            "@type": "OpeningHoursSpecification",
+            "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+            "opens": "07:00",
+            "closes": "17:30"
+          }
+        ]
+      },
+      {
+        "@type": "ChildCare",
+        "@id": "https://tinysteps.io/#location-union",
+        "name": "Tiny Steps Learning Center — Union Ave",
+        "parentOrganization": { "@id": "https://tinysteps.io/#organization" },
+        "description": "Opened 2022. Warm setting with added space for community-focused learning.",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "186 Union Ave",
+          "addressLocality": "Paterson",
+          "addressRegion": "NJ",
+          "postalCode": "07502",
+          "addressCountry": "US"
+        },
+        "openingHoursSpecification": [
+          {
+            "@type": "OpeningHoursSpecification",
+            "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+            "opens": "07:00",
+            "closes": "17:30"
+          }
+        ]
+      },
+      {
+        "@type": "ChildCare",
+        "@id": "https://tinysteps.io/#location-paterson-ave",
+        "name": "Tiny Steps Learning Center — Paterson Ave",
+        "parentOrganization": { "@id": "https://tinysteps.io/#organization" },
+        "description": "First Tiny Steps location (2015). Temporarily closed; planned reopening 2026. Planned hours upon reopening: Monday–Friday 6:30 AM–6:30 PM.",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "150 Paterson Ave",
+          "addressLocality": "Paterson",
+          "addressRegion": "NJ",
+          "postalCode": "07502",
+          "addressCountry": "US"
+        }
+      }
+    ]
+  }
+  </script>
+  <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;500;600;700;800&family=Fredoka:wght@500;600;700&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="./css/main.css"/>
+</head>
+<body>
+
+<!-- Floating shapes background (fixed, sections float over it on scroll) -->
+<div class="bg-shapes" id="bg-shapes" aria-hidden="true">
+  <div class="shape shape-s1"></div>
+  <div class="shape shape-s2"></div>
+  <div class="shape shape-s3"></div>
+  <div class="shape shape-s4"></div>
+  <div class="shape shape-s5"></div>
+  <div class="shape shape-s6"></div>
+</div>
+
+<!-- Announcement Bar -->
+<div class="topbar">
+  🎉 Limited spaces remain for 2025-26! <a href="contact">Schedule a Tour Today →</a>
+</div>
+
+<!-- Header -->
+<header>
+  <nav>
+    <a href="./" class="logo">
+      <img src="./images/Logo-Tiny-1-removebg.png" alt="Tiny Steps Learning Center Logo" />
+    </a>
+    <ul class="nav-links">
+      <li><a href="./">Home</a></li>
+      <li><a href="aboutus">About</a></li>
+      <li><a href="programs">Programs</a></li>
+      <li><a href="contact">Contact</a></li>
+      <li><a href="contact" class="nav-cta">Enroll Now</a></li>
+    </ul>
+    <button type="button" class="hamburger" id="hamburger" aria-label="Abrir menú">☰</button>
+  </nav>
+</header>
+
+<!-- Main: contenedor donde el router reemplaza el contenido según la ruta -->
+<main id="app" role="main"></main>
+
+<!-- Footer -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <div class="logo">
+        <img src="./images/Logo-Tiny-1-removebg.png" alt="Tiny Steps Learning Center Logo" loading="lazy" />
+      </div>
+      <p>Tiny Steps Learning Center provides safe, nurturing, and enriching childcare and early education programs across Paterson, NJ.</p>
+      <div class="footer-contact">
+        <a href="tel:+19735235883" class="footer-contact-link">
+          <svg class="footer-contact-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="currentColor" d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+          <span>(973) 523-5883</span>
+        </a>
+        <a href="https://wa.me/19735235883?text=Hi%21%20I%27d%20like%20to%20connect%20about%20Tiny%20Steps." class="footer-contact-link footer-contact-link--wa" target="_blank" rel="noopener noreferrer">
+          <svg class="footer-contact-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="currentColor" d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          <span>WhatsApp</span>
+        </a>
+        <a href="contact" class="footer-contact-link">
+          <svg class="footer-contact-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="currentColor" d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+          <span>Contact page</span>
+        </a>
+      </div>
+      <ul class="footer-socials" role="list">
+        <li>
+          <a class="footer-social-link footer-social-link--fb" href="https://www.facebook.com/tinystepslearningcenter" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+            <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="currentColor" d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+          </a>
+        </li>
+        <li>
+          <a class="footer-social-link footer-social-link--wa" href="https://wa.me/19735235883?text=Hi%21%20I%27d%20like%20to%20connect%20about%20Tiny%20Steps." target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">
+            <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="currentColor" d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          </a>
+        </li>
+        <li>
+          <a class="footer-social-link footer-social-link--ig" href="https://www.instagram.com/tinystepslearningcenter/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+            <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="currentColor" d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.07-1.28.072-1.689.072-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+          </a>
+        </li>
+        <li>
+          <a class="footer-social-link footer-social-link--tt" href="https://www.tiktok.com/@tinystepslearningcenter" target="_blank" rel="noopener noreferrer" aria-label="TikTok">
+            <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="currentColor" d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-5.2 1.74 2.89 2.89 0 012.31-4.64v-3.5a6.33 6.33 0 00-1.88-.28 6.34 6.34 0 000 12.68 6.34 6.34 0 006.34-6.34V8.92a8.16 8.16 0 004.77 1.52v-3.5a4.85 4.85 0 01-1.22-.25z"/></svg>
+          </a>
+        </li>
+        <li>
+          <a class="footer-social-link footer-social-link--li" href="https://www.linkedin.com/company/tiny-steps-learning-center" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+            <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path fill="currentColor" d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+          </a>
+        </li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Discover</h4>
+      <ul>
+        <li><a href="aboutus">About Us</a></li>
+        <li><a href="programs">Programs</a></li>
+        <li><a href="contact">Contact</a></li>
+        <li><a href="mailto:hiring@tinysteps.io?subject=Career%20Inquiry">Careers</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Getting Started</h4>
+      <ul>
+        <li><a href="contact">Schedule a Tour</a></li>
+        <li><a href="contact">Enroll Now</a></li>
+        <li><a href="programs">Drop-in Care</a></li>
+        <li><a href="programs">Summer Camp</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Families</h4>
+      <ul>
+        <li><a href="#">Parent Portal</a></li>
+        <li><a href="#">Renew Enrollment</a></li>
+        <li><a href="contact">Resources &amp; questions</a></li>
+        <li><a href="contact">Refer a Friend</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    © 2026 Tiny Steps Learning Center. All rights reserved. | Paterson, NJ
+  </div>
+</footer>
+
+<button type="button" class="float-btn" id="float-tour-btn">📅 Schedule a Tour</button>
+
+<script src="js/router.js"></script>
+<script src="js/programs.js"></script>
+<script src="js/app.js"></script>
+<script src="js/script.js"></script>
+</body>
+</html>
