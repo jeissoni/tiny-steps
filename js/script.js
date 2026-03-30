@@ -20,7 +20,7 @@
       return;
     }
     if (document.body.classList.contains('nav-open')) {
-      var link = e.target.closest('.nav-links a[href^="/"], .nav-links a[href^="#/"]');
+      var link = e.target.closest('.nav-links a');
       if (link) closeMenu();
     }
   });

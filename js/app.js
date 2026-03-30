@@ -301,11 +301,7 @@
   function setNavActive(route) {
     var parse = window.TinyStepsRouter && window.TinyStepsRouter.parseHrefToRoute;
     if (!parse) return;
-    var links = document.querySelectorAll(
-      '.nav-links a[href^="/"], .nav-links a[href^="#/"]'
-    );
-    links.forEach(function (a) {
-      if (a.classList.contains('nav-cta')) return;
+    document.querySelectorAll('.nav-links > li > a:not(.nav-cta)').forEach(function (a) {
       var key = parse(a.getAttribute('href') || '');
       if (key === null) return;
       a.classList.toggle('active', key === route);

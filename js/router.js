@@ -1,12 +1,9 @@
 /**
- * Tiny Steps SPA — History API (URLs limpias /programs, /contact — sin #/)
- * SEO: título, meta description, canonical y Open Graph por ruta.
+ * Tiny Steps SPA — History API (URLs limpias). Compatible con GitHub Pages (/repo/) vía __TINY_STEPS_BASE__.
  */
 (function (global) {
   'use strict';
 
-  /** Absoluto desde la raíz del sitio (válido con cualquier pathname, p. ej. /programs). */
-  var VIEWS_BASE = '/views/';
   var ALLOWED_ROUTES = [
     'home',
     'aboutus',
@@ -44,6 +41,35 @@
       'Contact Tiny Steps Learning Center in Paterson, NJ: three locations, phone (973) 523-5883, tours, and enrollment information.'
   };
 
+  function getBasePath() {
+    var meta = document.querySelector('meta[name="site-base-path"]');
+    if (meta) {
+      var c = (meta.getAttribute('content') || '').trim();
+      if (c) {
+        var out = c.charAt(0) === '/' ? c : '/' + c;
+        return out.replace(/\/$/, '');
+      }
+    }
+    if (typeof global.__TINY_STEPS_BASE__ !== 'undefined') {
+      return global.__TINY_STEPS_BASE__ || '';
+    }
+    var parts = global.location.pathname.split('/').filter(Boolean);
+    if (parts.length && ALLOWED_ROUTES.indexOf(parts[0]) === -1) {
+      return '/' + parts[0];
+    }
+    return '';
+  }
+
+  function stripBasePath(pathname) {
+    var base = getBasePath();
+    if (!base || !pathname) return pathname || '/';
+    if (pathname.indexOf(base) === 0) {
+      var rest = pathname.slice(base.length) || '/';
+      return rest.charAt(0) === '/' ? rest : '/' + rest;
+    }
+    return pathname;
+  }
+
   function normalizeRoute(route) {
     if (!route) return 'home';
     if (route === 'locations') return 'contact';
@@ -51,15 +77,17 @@
     return ALLOWED_ROUTES.indexOf(route) !== -1 ? route : 'home';
   }
 
-  /** Ruta lógica → path en el navegador (siempre desde la raíz del sitio). */
   function routeToPath(route) {
     route = normalizeRoute(route);
-    return route === 'home' ? '/' : '/' + route;
+    var path = route === 'home' ? '/' : '/' + route;
+    var base = getBasePath();
+    if (!base) return path;
+    return base + (path === '/' ? '/' : path);
   }
 
-  /** Pathname → ruta lógica. Rutas desconocidas → home. */
   function pathToRoute(pathname) {
-    var p = (pathname || '').replace(/\/+$/, '') || '/';
+    var p = stripBasePath(pathname || '');
+    p = (p || '').replace(/\/+$/, '') || '/';
     if (p === '/' || p === '' || /\/index\.html$/i.test(p)) return 'home';
     var seg = p.replace(/^\/+/, '').split('/')[0].toLowerCase();
     if (seg === 'home') return 'home';
@@ -69,17 +97,21 @@
   }
 
   function isSpaPath(pathname) {
-    var p = (pathname || '').replace(/\/+$/, '') || '/';
+    var p = stripBasePath(pathname || '');
+    p = p.replace(/\/+$/, '') || '/';
     if (p === '/' || p === '/home' || /\/index\.html$/i.test(p)) return true;
     var seg = p.replace(/^\/+/, '').split('/')[0].toLowerCase();
     return ALLOWED_ROUTES.indexOf(seg) !== -1;
   }
 
   function getSiteOrigin() {
+    if (/github\.io$/i.test(global.location.hostname || '')) {
+      return (global.location.origin || '').replace(/\/$/, '');
+    }
     var meta = document.querySelector('meta[name="site-origin"]');
     var raw = meta && meta.getAttribute('content');
-    if (raw) return raw.replace(/\/$/, '');
-    return global.location.origin || '';
+    if (raw && raw.trim()) return raw.replace(/\/$/, '');
+    return (global.location.origin || '').replace(/\/$/, '');
   }
 
   function setSeoForRoute(route) {
@@ -88,8 +120,9 @@
     var desc = DESCRIPTIONS[route] || DESCRIPTIONS.home;
     var origin = getSiteOrigin();
     var path = routeToPath(route);
-    var pageUrl = origin ? origin + (path === '/' ? '/' : path) : '';
-    var imageUrl = origin ? origin + '/images/cropped-logo-head.png' : '';
+    var pageUrl = origin ? origin + path : '';
+    var base = getBasePath();
+    var imageUrl = origin ? origin + (base || '') + '/images/cropped-logo-head.png' : '';
 
     var setContent = function (sel, value) {
       var el = document.querySelector(sel);
@@ -122,7 +155,9 @@
 
   function getViewPath(route) {
     var name = normalizeRoute(route);
-    return VIEWS_BASE + name + '.html';
+    var base = getBasePath();
+    var prefix = base ? base + '/views/' : '/views/';
+    return prefix + name + '.html';
   }
 
   function loadView(path) {
@@ -142,18 +177,13 @@
     document.title = TITLES[route] || TITLES.home;
   }
 
-  /**
-   * @param {string} route
-   * @param {{ skipPush?: boolean }} opts — skipPush: carga inicial, popstate o migración hash (no añade entrada al historial).
-   */
   function navigate(route, opts) {
     opts = opts || {};
     route = normalizeRoute(route);
 
     if (!opts.skipPush) {
       var targetPath = routeToPath(route);
-      var current =
-        global.location.pathname.replace(/\/$/, '') || '/';
+      var current = global.location.pathname.replace(/\/$/, '') || '/';
       var normalizedTarget = targetPath.replace(/\/$/, '') || '/';
       if (current !== normalizedTarget) {
         global.history.pushState({ tsRoute: route }, '', targetPath);
@@ -189,9 +219,6 @@
     global.history.replaceState({ tsRoute: route }, '', routeToPath(route));
   }
 
-  /**
-   * Convierte href de un enlace interno (/programs, #/programs) en nombre de ruta; null si no es SPA.
-   */
   function parseHrefToRoute(href) {
     if (!href || href === '#') return null;
     if (/^(mailto|tel|javascript):/i.test(href)) return null;
@@ -238,6 +265,7 @@
     init: init,
     routeToPath: routeToPath,
     pathToRoute: pathToRoute,
-    parseHrefToRoute: parseHrefToRoute
+    parseHrefToRoute: parseHrefToRoute,
+    getBasePath: getBasePath
   };
 })(typeof window !== 'undefined' ? window : this);
